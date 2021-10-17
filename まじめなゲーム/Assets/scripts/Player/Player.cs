@@ -23,8 +23,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var h = Input.GetAxis("Horizontal") * playerSpeed;
-        var v = Input.GetAxis("Vertical") * playerSpeed;
+        var h = Input.GetAxis("Horizontal") * playerSpeed / 100;
+        var v = Input.GetAxis("Vertical") * playerSpeed / 100;
 
         if (v != 0 || h != 0)
         {
