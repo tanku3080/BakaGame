@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 11100000}
   m_Layer: 0
-  m_Name: Audience
+  m_Name: Audience 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9840072, y: 0, z: -1.5090721}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.5090721}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 400002}
   - {fileID: 400004}
@@ -103,7 +103,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f790ce3402817ee468aa0f8d2216f39d, type: 2}
+  - {fileID: 2100000, guid: 5c57cae4107c43743b682234ac2b44bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
