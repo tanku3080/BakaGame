@@ -708,6 +708,7 @@ MonoBehaviour:
   - {fileID: 1562235774}
   - {fileID: 1323632222}
   - {fileID: 323447357}
+  instanceEventValue: 2
 --- !u!1 &2047432795
 GameObject:
   m_ObjectHideFlags: 0
