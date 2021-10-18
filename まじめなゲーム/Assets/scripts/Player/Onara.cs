@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Cinemachine;
 
 
 /// <summary>
@@ -9,13 +11,13 @@ using UnityEngine;
 public class Onara : MonoBehaviour
 {
     /// <summary>player本体を格納する</summary>
-    [SerializeField] Transform player = null;
+    [SerializeField] private Transform player = null;
 
     /// <summary>おならの発射位置</summary>
-    [SerializeField] Transform onaraNozzle = null;
+    [SerializeField] private Transform onaraNozzle = null;
 
     /// <summary>ジャンプに使うおならのちから</summary>
-    [SerializeField,Range(1f,2f)] float onaraPow = 2f;
+    private readonly float onaraPow = 400000f;
 
     /// <summary>playerがジャンプで行ける最高高度</summary>
     [SerializeField] float playerJumpLimit = 500f;
@@ -23,34 +25,55 @@ public class Onara : MonoBehaviour
     /// <summary>おならの限界点</summary>
     [SerializeField] float limitOnara = 10f;
 
+    /// <summary>おならのバーを入れる</summary>
+    [SerializeField] Slider onaraBar = null;
+
+    /// <summary>おならの最大値を入れる</summary>
+    [SerializeField] float onaraBarMaxValue = 1000f;
+
+    [SerializeField] CinemachineVirtualCamera playercam = null;
+
     Rigidbody rd = null;
+
+    private bool isGrand = false;
+    private bool grandKey = true;
+
     // Start is called before the first frame update
     void Start()
     {
-        rd = gameObject.GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        
+        rd = player.gameObject.GetComponent<Rigidbody>();
+        onaraBar.maxValue = onaraBarMaxValue;
+        onaraBar.value = onaraBarMaxValue;
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && onaraBar.value > 0)
         {
             if (rd.velocity.magnitude < limitOnara)
             {
-                Debug.Log("正規");
                 rd.AddForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
+                onaraBar.value--;
             }
             else
             {
                 if (player.position.y < playerJumpLimit)
                 {
-                    Debug.Log("例外");
                     rd.AddRelativeForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
+                    onaraBar.value--;
                 }
+            }
+        }
+        else
+        {
+            if (grandKey)
+            {
+                if (isGrand == false)
+                {
+                    playercam.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = 0.5f;
+                }
+                else playercam.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = 0f;
+                grandKey = false;
             }
         }
 
@@ -60,5 +83,15 @@ public class Onara : MonoBehaviour
             rd.velocity = Vector3.zero;
             player.position = new Vector3(player.position.x,player.position.y - 200f,player.position.z);
         }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Grand"))
+        {
+            isGrand = true;
+            grandKey = true;
+        }
+        else isGrand = false;
     }
 }

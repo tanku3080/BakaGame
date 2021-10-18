@@ -749,9 +749,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1885937202}
   onaraNozzle: {fileID: 0}
-  onaraPow: 10000000
   playerJumpLimit: 1000
   limitOnara: 10
+  onaraBar: {fileID: 0}
+  onaraBarMaxValue: 50
 --- !u!114 &1885937197
 MonoBehaviour:
   m_ObjectHideFlags: 0
