@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] GameObject player = null;
-    [SerializeField] float playerSpeed = 20f;
-    [SerializeField] float playerLimitSpeed = 60f;
-    Rigidbody rd = null;
+    [SerializeField] private GameObject player = null;
+    [SerializeField] private float playerSpeed = 20f;
+
     // Start is called before the first frame update
     void Start()
     {
-        rd = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -19,16 +17,19 @@ public class Player : MonoBehaviour
     {
         //var mouseH = Input.GetAxis("Mouse H");
         //var mouseY = Input.GetAxis("Mouse Y");
-    }
 
-    private void FixedUpdate()
-    {
-        var h = Input.GetAxis("Horizontal") * playerSpeed / 100;
-        var v = Input.GetAxis("Vertical") * playerSpeed / 100;
+        var h = Input.GetAxis("Horizontal") * playerSpeed / 10000;
+        var v = Input.GetAxis("Vertical") * playerSpeed / 10000;
 
         if (v != 0 || h != 0)
         {
-            rd.velocity = new Vector3(h, 0, v);
+            player.transform.position += new Vector3(h, 0, v);
+
         }
+    }
+
+    private void OnAnimatorMove()
+    {
+        
     }
 }
