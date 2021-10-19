@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     /// <summary>タイムリミットになったらTrueにする</summary>
     public bool timeLimit = false;
     public Text timerText;
-    [SerializeField] float totalTime =0;
-    int seconds;
+    [SerializeField] float totalTime =180;
+    [SerializeField] Player player = null;
+
     void Start()
     {
         
@@ -18,10 +19,45 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        totalTime -= Time.deltaTime;
-        seconds = (int)totalTime;
-        timerText.text = seconds.ToString();
-
-
+        Timer();
+        GameOver();
     }
+
+    void Timer()
+    {
+        if (totalTime < 0)
+        {
+            timeLimit = true;
+            return;
+        }
+        else
+        {
+            totalTime -= Time.deltaTime;
+            timerText.text = "<color=red>Timer</color>" + ((int)totalTime).ToString();
+        }
+    }
+
+    bool oneUseFlag = true;
+
+    void GameOver()
+    {
+        if (timeLimit)
+        {
+            player.Dappun();
+        }
+        if (player.endOfDappun)
+        {
+            if (oneUseFlag)
+            {
+                FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN);
+                oneUseFlag = false;
+            }
+            if (FadeManager.Instance.FadeStop)
+            {
+                FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.GAME_OVER);
+            }
+        }
+    }
+
+
 }

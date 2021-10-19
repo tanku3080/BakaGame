@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>フェードとシーン切り替えのどちらかを実行する</summary>
-public class FadeManager:MonoBehaviour
+public class FadeManager:Singleton<FadeManager>
 {
     public enum SCENE_STATUS
     {
@@ -11,7 +11,7 @@ public class FadeManager:MonoBehaviour
     }
     public enum FADE_STATUS
     {
-        FADE_IN, FADE_OUT, AUTO, NONE
+        FADE_IN, FADE_OUT, NONE
     }
     /// <summary>フェード処理が終わったかどうかを返す</summary>
     [HideInInspector] public bool FadeStop { get { return fadeStopFlag; } set { FadeStop = fadeStopFlag; } }
@@ -22,9 +22,9 @@ public class FadeManager:MonoBehaviour
     /// <param name="status">どんなフェードを行いたいか</param>
     /// <param name="fadeSpeed">Fadeの速度</param>
     /// <param name="canvas">Fadeさせるオブジェクト</param>
-    public void FadeSystem(FADE_STATUS status = FADE_STATUS.NONE, float fadeSpeed = 0.02f, CanvasGroup canvas = null)
+    public void FadeSystem(FADE_STATUS status = FADE_STATUS.NONE, float fadeSpeed = 0.02f)
     {
-        StartCoroutine(StartFadeSystem(status, fadeSpeed, canvas));
+        StartCoroutine(StartFadeSystem(status, fadeSpeed, gameObject.GetComponent<CanvasGroup>()));
     }
     private IEnumerator StartFadeSystem(FADE_STATUS _STATUS = FADE_STATUS.NONE, float fadeSpeed = 0.02f, CanvasGroup obj = null)
     {
@@ -53,16 +53,6 @@ public class FadeManager:MonoBehaviour
                         break;
                     }
                     else obj.alpha -= fadeSpeed;
-                }
-                break;
-            case FADE_STATUS.AUTO:
-                if (obj.alpha == 1)
-                {
-                    FadeSystem(FADE_STATUS.FADE_OUT);
-                }
-                else
-                {
-                    FadeSystem(FADE_STATUS.FADE_IN);
                 }
                 break;
             case FADE_STATUS.NONE:

@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject player = null;
     [SerializeField] private float playerSpeed = 20f;
 
+    /// <summary>脱糞処理が終わった</summary>
+    [HideInInspector] public bool endOfDappun = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +34,12 @@ public class Player : MonoBehaviour
     private void OnAnimatorMove()
     {
         
+    }
+
+    /// <summary>おもらし処理(仮)</summary>
+    public void Dappun()
+    {
+        Debug.Log("脱糞完了");
+        endOfDappun = true;
     }
 }
