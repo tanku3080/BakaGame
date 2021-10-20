@@ -280,6 +280,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91c4b965c77dc0b4ba080cc0aa9ce666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &531986868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 454225823, guid: 7e1cdb747c949a84e9a57cde739eef6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1040753184}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 601caf2f7c3f9654b8da9cb9d9189a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &531986871 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2611730033017793956, guid: 7e1cdb747c949a84e9a57cde739eef6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1040753184}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &537637847
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimit: 0
   timerText: {fileID: 1043203934}
-  totalTime: 10
+  totalTime: 60
   player: {fileID: 531986867}
 --- !u!4 &537637849
 Transform:
@@ -408,6 +426,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 454225823, guid: 7e1cdb747c949a84e9a57cde739eef6e, type: 3}
+      propertyPath: onaraNozzle
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 454225825, guid: 7e1cdb747c949a84e9a57cde739eef6e, type: 3}
+      propertyPath: anime
+      value: 
+      objectReference: {fileID: 531986871}
+    - target: {fileID: 454225825, guid: 7e1cdb747c949a84e9a57cde739eef6e, type: 3}
+      propertyPath: onaraClass
+      value: 
+      objectReference: {fileID: 531986868}
     - target: {fileID: 1043203934, guid: 7e1cdb747c949a84e9a57cde739eef6e, type: 3}
       propertyPath: m_Text
       value: 
@@ -422,6 +452,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2611730033017793956, guid: 7e1cdb747c949a84e9a57cde739eef6e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 225a75cac768cda4c955a5d523815e49, type: 2}
     - target: {fileID: 4796053827335231130, guid: 7e1cdb747c949a84e9a57cde739eef6e,
         type: 3}
       propertyPath: m_LocalPosition.x

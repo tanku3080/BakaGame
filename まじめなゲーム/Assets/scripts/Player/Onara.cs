@@ -35,8 +35,12 @@ public class Onara : MonoBehaviour
 
     Rigidbody rd = null;
 
+    /// <summary>地面に接地しているか？</summary>
     private bool isGrand = false;
+    /// <summary>対空中か？</summary>
     private bool grandKey = true;
+
+    [HideInInspector] public bool jet = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +54,7 @@ public class Onara : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && onaraBar.value > 0)
         {
+            jet = true;
             if (rd.velocity.magnitude < limitOnara)
             {
                 rd.AddForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
@@ -84,14 +89,22 @@ public class Onara : MonoBehaviour
             player.position = new Vector3(player.position.x,player.position.y - 200f,player.position.z);
         }
     }
-
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Grand"))
         {
             isGrand = true;
             grandKey = true;
+            jet = false;
+            Debug.Log("接地");
         }
-        else isGrand = false;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Grand"))
+        {
+            isGrand = false;
+            Debug.Log("離脱");
+        }
     }
 }
