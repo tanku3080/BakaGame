@@ -14,8 +14,7 @@ public class FadeManager:Singleton<FadeManager>
         FADE_IN, FADE_OUT, NONE
     }
     /// <summary>フェード処理が終わったかどうかを返す</summary>
-    [HideInInspector] public bool FadeStop { get { return fadeStopFlag; } set { FadeStop = fadeStopFlag; } }
-    private bool fadeStopFlag = false;
+    [HideInInspector] public bool fadeStopFlag;
 
     /// <summary>フェード機能のみを行う
     /// </summary>
@@ -25,6 +24,11 @@ public class FadeManager:Singleton<FadeManager>
     public void FadeSystem(FADE_STATUS status = FADE_STATUS.NONE, float fadeSpeed = 0.02f)
     {
         StartCoroutine(StartFadeSystem(status, fadeSpeed, gameObject.GetComponent<CanvasGroup>()));
+    }
+    /// <summary>画面をあえて黒く設定するだけのシステム</summary>
+    public void FadeBlack()
+    {
+        gameObject.GetComponent<CanvasGroup>().alpha = 1;
     }
     private IEnumerator StartFadeSystem(FADE_STATUS _STATUS = FADE_STATUS.NONE, float fadeSpeed = 0.02f, CanvasGroup obj = null)
     {

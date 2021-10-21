@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
                 FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN);
                 oneUseFlag = false;
             }
-            if (FadeManager.Instance.FadeStop)
+            if (FadeManager.Instance.fadeStopFlag)
             {
                 FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.GAME_OVER);
             }
