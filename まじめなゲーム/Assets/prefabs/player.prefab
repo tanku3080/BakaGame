@@ -60,7 +60,7 @@ MonoBehaviour:
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 0, z: -0.4}
   m_XDamping: 1
-  m_YDamping: 0.1
+  m_YDamping: 0
   m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -103,8 +103,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871269289}
-  m_LocalRotation: {x: 0.73610646, y: -0, z: -0, w: 0.6768659}
-  m_LocalPosition: {x: -0.0000037774444, y: 50.000015, z: 4.200012}
+  m_LocalRotation: {x: 0.73610634, y: -0, z: -0, w: 0.676866}
+  m_LocalPosition: {x: -0.000000052154064, y: 49.999966, z: 4.200012}
   m_LocalScale: {x: 100, y: 99.99998, z: 99.99998}
   m_Children:
   - {fileID: 410455041}
@@ -223,9 +223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Timer
-
-'
+  m_Text: 
 --- !u!1 &29519471121219248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1545,7 @@ Animator:
   m_GameObject: {fileID: 6214378447094361111}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e4589503436491c4f9caffc2ace29fd8, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 225a75cac768cda4c955a5d523815e49, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1603,7 +1601,9 @@ MonoBehaviour:
   limitOnara: 10
   onaraBar: {fileID: 4695500817823691816}
   onaraBarMaxValue: 1000
+  bom: {fileID: 2917599134704187391, guid: 8d15b074a17c0f44c8df5467f34f083b, type: 3}
   playercam: {fileID: 871269290}
+  jet: 0
 --- !u!114 &454225825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1617,8 +1617,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6214378447094361111}
+  onaraClass: {fileID: 454225823}
   playerSpeed: 20
   endOfDappun: 0
+  anime: {fileID: 2611730033017793956}
 --- !u!1 &6329739318301473019
 GameObject:
   m_ObjectHideFlags: 0

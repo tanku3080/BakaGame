@@ -31,6 +31,8 @@ public class Onara : MonoBehaviour
     /// <summary>おならの最大値を入れる</summary>
     [SerializeField] float onaraBarMaxValue = 1000f;
 
+    [SerializeField] GameObject bom = null;
+
     [SerializeField] CinemachineVirtualCamera playercam = null;
 
     Rigidbody rd = null;
@@ -40,7 +42,9 @@ public class Onara : MonoBehaviour
     /// <summary>対空中か？</summary>
     private bool grandKey = true;
 
-    [HideInInspector] public bool jet = false; 
+    [HideInInspector] public bool jet = false;
+    /// <summary>ボムが登録されているかを判定するのに使う</summary>
+    [SerializeField] GameObject bomObj = null;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +54,13 @@ public class Onara : MonoBehaviour
         onaraBar.value = onaraBarMaxValue;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Q) && bomObj == null)
+        {
+            bomObj = Instantiate(bom, player.transform.position - new Vector3(0, 0, 0.1f), Quaternion.identity);
+        }
+    }
     private void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.Space) && onaraBar.value > 0)
