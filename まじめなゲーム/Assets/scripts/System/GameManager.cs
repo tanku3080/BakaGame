@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] float totalTime =180;
     [SerializeField] Player player = null;
 
+
+    /// <summary>ゲームがスタートしたらtrueにする</summary>
+    [HideInInspector] public bool gameStart = false;
+
     void Start()
     {
         
@@ -23,15 +27,18 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 
+    /// <summary>残り時間を表示する</summary>
     void Timer()
     {
         if (totalTime < 0)
         {
             timeLimit = true;
+            gameStart = false;
             return;
         }
         else
         {
+            gameStart = true;
             totalTime -= Time.deltaTime;
             timerText.text = "<color=red>Timer</color>" + ((int)totalTime).ToString();
         }
@@ -39,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     bool oneUseFlag = true;
 
+    /// <summary>ゲームオーバーに関する処理</summary>
     void GameOver()
     {
         if (timeLimit)
