@@ -30,10 +30,12 @@ public class Onara : MonoBehaviour
 
     /// <summary>おならの最大値を入れる</summary>
     [SerializeField] float onaraBarMaxValue = 1000f;
-
+    /// <summary>爆弾を入れる</summary>
     [SerializeField] GameObject bom = null;
-
+    /// <summary>playerカメラを格納</summary>
     [SerializeField] CinemachineVirtualCamera playercam = null;
+    /// <summary>飛行おなら音の格納</summary>
+    [SerializeField] AudioClip jumpOnara = null;
 
     Rigidbody rd = null;
 
