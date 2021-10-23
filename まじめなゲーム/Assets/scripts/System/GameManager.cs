@@ -49,10 +49,6 @@ public class GameManager : MonoBehaviour
     /// <summary>ゲームオーバーに関する処理</summary>
     void GameOver()
     {
-        if (timeLimit)
-        {
-            player.Dappun();
-        }
         if (player.endOfDappun)
         {
             if (oneUseFlag)

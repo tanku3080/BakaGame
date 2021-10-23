@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool endOfDappun = false;
 
     [SerializeField] Animator anime = null;
-
+    /// <summary>GameManagerがアタッチされたオブジェクトをアタッチ</summary>
+    [SerializeField] GameManager manager = null;
+    internal bool oneTimeFlag = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,6 @@ public class Player : MonoBehaviour
     {
         //var mouseH = Input.GetAxis("Mouse H");
         //var mouseY = Input.GetAxis("Mouse Y");
-
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
@@ -46,12 +47,19 @@ public class Player : MonoBehaviour
             Debug.Log(onaraClass.jet);
         }
 
+        if (manager.timeLimit && oneTimeFlag)
+        {
+            oneTimeFlag = false;
+            Dappun();
+        }
+
     }
 
     /// <summary>おもらし処理(仮)</summary>
     public void Dappun()
     {
         Debug.Log("脱糞完了");
+        anime.SetTrigger("unko");
         endOfDappun = true;
     }
 }
