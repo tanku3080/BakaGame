@@ -10,6 +10,7 @@ public class NpcController : MonoBehaviour
     }
     [SerializeField] Animation anime = null;
     string animeName = null;
+    bool isDie = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +21,13 @@ public class NpcController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!anime.isPlaying)
+        if (!anime.isPlaying && isDie == false)
         {
             AnimePlay(ANIME_STATE.SELECT);
+        }
+        if (isDie)
+        {
+
         }
     }
 
@@ -60,5 +65,14 @@ public class NpcController : MonoBehaviour
         }
         anime.Play();
         animeName = anime.clip.name;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            anime.Stop();
+            isDie = true;
+        }
     }
 }
