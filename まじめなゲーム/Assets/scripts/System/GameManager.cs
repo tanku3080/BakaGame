@@ -13,14 +13,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        BGMManager.Instance.BGMSet(BGMManager.BGM_STATE.GAME).Play();
+        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_OUT);
     }
 
     // Update is called once per frame
     void Update()
     {
         Timer();
-        GameOver();
     }
 
     void Timer()
@@ -37,22 +37,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    bool oneUseFlag = true;
-
-    void GameOver()
+    public void GameOver()
     {
-        if (player.endOfDappun)
-        {
-            if (oneUseFlag)
-            {
-                FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN);
-                oneUseFlag = false;
-            }
-            if (FadeManager.Instance.fadeStopFlag)
-            {
-                FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.GAME_OVER);
-            }
-        }
+        BGMManager.Instance.BGMStop();
+        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.02f,true, "GameOver");
     }
 
 

@@ -11,6 +11,10 @@ public class OnaraBom : MonoBehaviour
     [SerializeField] float upwardsModifier = 0;
     Rigidbody rb;
 
+    float time = 0;
+    /// <summary>一度しか使わない判定</summary>
+    private bool oneFlag = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +24,10 @@ public class OnaraBom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        time += Time.deltaTime;
+        if (expTime < time && oneFlag)
         {
+            oneFlag = false;
             Explosion();
         }
     }
@@ -29,6 +35,6 @@ public class OnaraBom : MonoBehaviour
     private void Explosion()
     {
         rb.AddExplosionForce(power, new Vector3(0,1,0), radius, upwardsModifier, ForceMode.Impulse);
-        //Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
