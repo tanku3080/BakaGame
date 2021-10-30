@@ -12,9 +12,8 @@ public class Onara : MonoBehaviour
 {
     /// <summary>player本体を格納する</summary>
     [SerializeField] private Transform player = null;
-
-    /// <summary>おならの発射位置</summary>
-    [SerializeField] private Transform onaraNozzle = null;
+    [SerializeField] private Transform onaraPlayPos = null;
+    [SerializeField] private ParticleSystem onaraJetSystem = null;
 
     /// <summary>ジャンプに使うおならのちから</summary>
     private readonly float onaraPow = 400000f;
@@ -68,6 +67,7 @@ public class Onara : MonoBehaviour
         rd = player.gameObject.GetComponent<Rigidbody>();
         onaraBar.maxValue = onaraBarMaxValue;
         onaraBar.value = onaraBarMaxValue;
+        onaraJetSystem.transform.position = new Vector3(player.position.x,player.position.y - 1.5f,player.position.z);
     }
 
     private void Update()
@@ -118,6 +118,7 @@ public class Onara : MonoBehaviour
             {
                 rd.AddForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                 OnaraParameter(onaraJetCost);
+                onaraJetSystem.Play();
             }
             else
             {
@@ -125,11 +126,13 @@ public class Onara : MonoBehaviour
                 {
                     rd.AddRelativeForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                     OnaraParameter(onaraJetCost);
+                    onaraJetSystem.Play();
                 }
             }
         }
         else
         {
+            onaraJetSystem.Stop();
             if (grandKey)
             {
                 if (isGrand == false)
