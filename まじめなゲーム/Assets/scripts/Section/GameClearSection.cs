@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameOverSection : MonoBehaviour
+public class GameClearSection : MonoBehaviour
 {
     /// <summary>一度だけ実行する</summary>
     private bool actionFalg = true;
@@ -28,7 +26,7 @@ public class GameOverSection : MonoBehaviour
                 actionFalg = false;
                 BGMManager.Instance.BGMSet(BGMManager.BGM_STATE.OVER).Play();
             }
-            else if(collCount != 0 && startFalag)
+            else if (collCount != 0 && startFalag)
             {
                 BGMManager.Instance.BGMStop();
                 FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.START);
@@ -50,7 +48,7 @@ public class GameOverSection : MonoBehaviour
     }
     public void GoReStartButton()
     {
-        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.002f);
+        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN, 0.002f);
         collCount++;
         actionFalg = true;
         reStartFalg = true;

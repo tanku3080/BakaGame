@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     /// <summary>タイムリミットになったらTrueにする</summary>
     public bool timeLimit = false;
@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
     {
         BGMManager.Instance.BGMStop();
         FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.02f,true, "GameOver");
+    }
+
+    public void GameClear()
+    {
+        BGMManager.Instance.BGMStop();
+        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.02f,true,"GameClear");
     }
 
 

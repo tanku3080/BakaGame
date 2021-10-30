@@ -12,8 +12,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool endOfDappun = false;
 
     [SerializeField] Animator anime = null;
-    /// <summary>GameManagerがアタッチされたオブジェクトをアタッチ</summary>
-    [SerializeField] GameManager manager = null;
+
     internal bool oneTimeFlag = true;
 
     // Start is called before the first frame update
@@ -55,7 +54,7 @@ public class Player : MonoBehaviour
             Debug.Log(onaraClass.jet);
         }
 
-        if (manager.timeLimit && oneTimeFlag)
+        if (GameManager.Instance.timeLimit && oneTimeFlag)
         {
             oneTimeFlag = false;
             Dappun();
@@ -71,5 +70,5 @@ public class Player : MonoBehaviour
         endOfDappun = true;
         Invoke("GoToGameOver", waitTime);
     }
-    private void GoToGameOver() => manager.GetComponent<GameManager>().GameOver();
+    private void GoToGameOver() => GameManager.Instance.GameOver();
 }
