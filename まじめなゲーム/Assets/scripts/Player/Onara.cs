@@ -30,8 +30,17 @@ public class Onara : MonoBehaviour
 
     /// <summary>おならの最大値を入れる</summary>
     [SerializeField] float onaraBarMaxValue = 1000f;
+
+    /// <summary>おなら爆弾を行うためのコスト</summary>
+    [SerializeField] float onaraBomCost = 100f;
+    /// <summary>おなら射撃を行うためのコスト</summary>
+    [SerializeField] float onaraShotCost = 50f;
+    /// <summary>飛行の使用毎フレームの消費コスト</summary>
+    [SerializeField] float onaraJetCost = 2f;
     /// <summary>爆弾を入れる</summary>
     [SerializeField] GameObject bom = null;
+
+
     /// <summary>playerカメラを格納</summary>
     [SerializeField] CinemachineVirtualCamera playercam = null;
     /// <summary>飛行おなら音の格納</summary>
@@ -43,6 +52,11 @@ public class Onara : MonoBehaviour
     private bool isGrand = false;
     /// <summary>対空中か？</summary>
     private bool grandKey = true;
+
+    /// <summary>おなら射撃が行えるかどうかのキー</summary>
+    private bool onarashotKey = false;
+    /// <summary>おなら射撃の再使用時間</summary>
+    [SerializeField] float onaraShotReUseTime = 1.5f;
 
     [HideInInspector] public bool jet = false;
     /// <summary>ボムが登録されているかを判定するのに使う</summary>
@@ -58,10 +72,42 @@ public class Onara : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Q) && bomObj == null)
+        if (onaraBar.value > 0)
         {
-            bomObj = Instantiate(bom, player.transform.position - new Vector3(0, 0, 0.1f), Quaternion.identity);
+            if (Input.GetKeyUp(KeyCode.Q) && bomObj == null)
+            {
+                OnaraParameter(onaraBomCost);
+                bomObj = Instantiate(bom, player.transform.position - new Vector3(0, 0, 0.1f), Quaternion.identity);
+            }
+
+            if (Input.GetMouseButtonUp(0) && onarashotKey == false)
+            {
+                onarashotKey = true;
+                StartCoroutine(ReCastTime(onaraShotReUseTime));
+            }
         }
+    }
+
+    /// <summary>もう一度使えるまでの時間</summary>
+    /// <param name="time">待機時間</param>
+    /// <returns></returns>
+    IEnumerator ReCastTime(float time)
+    {
+        float timeDalta = 0f;
+        while (true)
+        {
+            yield return null;
+            if (time <= timeDalta) break;
+            else timeDalta += Time.deltaTime;
+        }
+        yield return onarashotKey = false;
+    }
+
+    /// <summary>おならの値を消費するための処理</summary>
+    /// <param name="input">消費する値</param>
+    private void OnaraParameter(float input)
+    {
+        onaraBar.value -= input;
     }
     private void FixedUpdate()
     {
@@ -71,14 +117,14 @@ public class Onara : MonoBehaviour
             if (rd.velocity.magnitude < limitOnara)
             {
                 rd.AddForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
-                onaraBar.value--;
+                OnaraParameter(onaraJetCost);
             }
             else
             {
                 if (player.position.y < playerJumpLimit)
                 {
                     rd.AddRelativeForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
-                    onaraBar.value--;
+                    OnaraParameter(onaraJetCost);
                 }
             }
         }

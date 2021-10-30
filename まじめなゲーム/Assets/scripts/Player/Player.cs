@@ -38,7 +38,14 @@ public class Player : MonoBehaviour
 
         if (onaraClass.jet == false)
         {
-            anime.SetInteger("moveV", (int)v);
+            if (v == 0 && h != 0)
+            {
+                anime.SetInteger("moveV", (int)h);
+            }
+            else
+            {
+                anime.SetInteger("moveV", (int)v);
+            }
             anime.SetBool("jet",onaraClass.jet);
         }
         else
