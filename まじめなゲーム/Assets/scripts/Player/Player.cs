@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] Animator anime = null;
 
+    internal bool oneTimeFlag = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,19 +25,26 @@ public class Player : MonoBehaviour
     {
         //var mouseH = Input.GetAxis("Mouse H");
         //var mouseY = Input.GetAxis("Mouse Y");
-
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
         //マップの大きさに合わせてアセットも小さくしたので移動距離は1000で割る
         if (v != 0 || h != 0)
         {
-            player.transform.position += new Vector3(h, 0, v) * playerSpeed / 10000;
+            player.transform.localPosition += playerSpeed * v * transform.forward / 10000;
+            player.transform.Rotate(playerSpeed * Vector3.up / 10000,h);
         }
 
         if (onaraClass.jet == false)
         {
-            anime.SetInteger("moveV", (int)v);
+            if (v == 0 && h != 0)
+            {
+                anime.SetInteger("moveV", (int)h);
+            }
+            else
+            {
+                anime.SetInteger("moveV", (int)v);
+            }
             anime.SetBool("jet",onaraClass.jet);
         }
         else
@@ -46,12 +54,21 @@ public class Player : MonoBehaviour
             Debug.Log(onaraClass.jet);
         }
 
+        if (GameManager.Instance.timeLimit && oneTimeFlag)
+        {
+            oneTimeFlag = false;
+            Dappun();
+        }
+
     }
 
     /// <summary>おもらし処理(仮)</summary>
-    public void Dappun()
+    public void Dappun(float waitTime = 1.5f)
     {
         Debug.Log("脱糞完了");
+        anime.SetTrigger("unko");
         endOfDappun = true;
+        Invoke("GoToGameOver", waitTime);
     }
+    private void GoToGameOver() => GameManager.Instance.GameOver();
 }
