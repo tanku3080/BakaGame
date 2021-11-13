@@ -24,7 +24,7 @@ public class GameClearSection : MonoBehaviour
             {
                 collCount++;
                 actionFalg = false;
-                BGMManager.Instance.BGMSet(BGMManager.BGM_STATE.OVER).Play();
+                BGMManager.Instance.BGMSet(BGMManager.BGM_STATE.CLEAR).Play();
             }
             else if (collCount != 0 && startFalag)
             {

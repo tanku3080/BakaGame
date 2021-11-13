@@ -11,10 +11,23 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] float totalTime =180;
     [SerializeField] Player player = null;
 
+    /// <summary>倒壊する建物を入れる</summary>
+    [HideInInspector] public List<ObjController> objs = new List<ObjController>();
+
     void Start()
     {
         BGMManager.Instance.BGMSet(BGMManager.BGM_STATE.GAME).Play();
         FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_OUT);
+        AddBuildingObj();
+    }
+
+    private void AddBuildingObj()
+    {
+        var target = FindObjectsOfType<ObjController>();
+        foreach (var item in target)
+        {
+            objs.Add(item);
+        }
     }
 
     // Update is called once per frame

@@ -1,45 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ObjController : MonoBehaviour
 {
+    /// <summary>破棄される時間</summary>
     [SerializeField] float destroyTime = 5f;
+    /// <summary>anglerDrafの大きさで落ちる速さを決める</summary>
+    [SerializeField] float gravitySpeed = 0.05f;
+    [SerializeField] BoxCollider box = null;
+    readonly Rigidbody rd = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        box = box != null ? box : gameObject.GetComponent<BoxCollider>();
+        rd.useGravity = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ObjDestroy()
     {
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            ObjDestroy();
-        }
-    }
-
-    private void ObjDestroy()
-    {
-        Debug.Log("start");
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        Vector3 endPos = new Vector3(transform.position.x, -1000000, transform.position.z);
-        transform.position = Vector3.Lerp(gameObject.transform.position, endPos, 0);
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Onara"))
-        {
-            ObjDestroy();
-        }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject)
-        {
-            Destroy(gameObject);
-        }
+        box.enabled = false;
+        rd.useGravity = true;
     }
 }

@@ -34,6 +34,8 @@ public class Onara : MonoBehaviour
     [SerializeField] float onaraBomCost = 100f;
     /// <summary>おなら射撃を行うためのコスト</summary>
     [SerializeField] float onaraShotCost = 50f;
+    ///<summary>おならの射程距離</summary>
+    [SerializeField] float onaraRange = 1f;
     /// <summary>飛行の使用毎フレームの消費コスト</summary>
     [SerializeField] float onaraJetCost = 2f;
     /// <summary>爆弾を入れる</summary>
@@ -76,12 +78,14 @@ public class Onara : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Q) && bomObj == null)
             {
+                Debug.Log("爆弾");
                 OnaraParameter(onaraBomCost);
                 bomObj = Instantiate(bom, player.transform.position - new Vector3(0, 0, 0.1f), Quaternion.identity);
             }
 
             if (Input.GetMouseButtonUp(0) && onarashotKey == false)
             {
+                Debug.Log("射撃");
                 onarashotKey = true;
                 StartCoroutine(ReCastTime(onaraShotReUseTime));
             }
@@ -94,6 +98,16 @@ public class Onara : MonoBehaviour
     IEnumerator ReCastTime(float time)
     {
         float timeDalta = 0f;
+        RaycastHit hit;
+        //射撃を行うコードをここに書く
+        if (Physics.Raycast(transform.position,Vector3.forward,out hit,onaraRange))
+        {
+            if (hit.collider.CompareTag("bulid"))
+            {
+
+            }
+        }
+
         while (true)
         {
             yield return null;
