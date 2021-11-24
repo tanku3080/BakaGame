@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -15,11 +13,6 @@ public class Player : MonoBehaviour
 
     internal bool oneTimeFlag = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +22,7 @@ public class Player : MonoBehaviour
         var v = Input.GetAxis("Vertical");
 
         //マップの大きさに合わせてアセットも小さくしたので移動距離は1000で割る
-        if (v != 0 || h != 0)
+        if (v != 0 && !endOfDappun || h != 0 && !endOfDappun)
         {
             player.transform.localPosition += playerSpeed * v * transform.forward / 10000;
             player.transform.Rotate(playerSpeed * Vector3.up / 10000,h);
