@@ -55,12 +55,27 @@ public class GeneralEditorSet : MonoBehaviour
             }
         }
     }
-    [MenuItem("Editor/RigitBody/starting")]
+    [MenuItem("Editor/RigitBody/Remove")]
+    private static void RemoveSetting()
+    {
+        foreach (var item in SearchObj())
+        {
+            if (item.GetComponent<Rigidbody>())
+            {
+                DestroyImmediate(item.GetComponent<Rigidbody>());
+            }
+        }
+    }
+
+    [MenuItem("Editor/RigitBody/useGravity_false")]
     private static void Setting()
     {
         foreach (var item in SearchObj())
         {
-            item.GetComponent<Rigidbody>().useGravity = false;
+            if (!item.GetComponent<Rigidbody>().useGravity == false)
+            {
+                item.GetComponent<Rigidbody>().useGravity = false;
+            }
         }
     }
 }

@@ -198,8 +198,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416424310}
-  m_LocalRotation: {x: 0.041889425, y: 0, z: 0, w: 0.99912226}
-  m_LocalPosition: {x: 1.032201, y: 0.63593227, z: -8.967155}
+  m_LocalRotation: {x: 0.041889224, y: 0, z: 0, w: 0.99912226}
+  m_LocalPosition: {x: -0.11514684, y: 4.8302174, z: -8.409751}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -283,6 +283,7 @@ MonoBehaviour:
   timerText: {fileID: 1043203934}
   totalTime: 100000
   player: {fileID: 531986867}
+  objs: []
 --- !u!4 &537637849
 Transform:
   m_ObjectHideFlags: 0
@@ -887,6 +888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 5
+  gravitySpeed: 0.05
+  box: {fileID: 0}
 --- !u!1 &2047432795
 GameObject:
   m_ObjectHideFlags: 0

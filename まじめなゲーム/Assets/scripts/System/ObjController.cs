@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class ObjController : MonoBehaviour
 {
     /// <summary>破棄される時間</summary>
@@ -18,6 +17,7 @@ public class ObjController : MonoBehaviour
 
     public void ObjDestroy()
     {
+        rd.isKinematic = false;
         box.enabled = false;
         rd.useGravity = true;
     }
