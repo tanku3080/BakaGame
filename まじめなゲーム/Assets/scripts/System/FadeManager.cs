@@ -7,7 +7,7 @@ public class FadeManager:Singleton<FadeManager>
 {
     public enum SCENE_STATUS
     {
-        START, GAME_PLAY, GAME_OVER, GAME_CLEAR, NONE
+        START, GAME_PLAY, GAME_OVER, GAME_CLEAR, ALPHA_SCENE,NONE
     }
     public enum FADE_STATUS
     {
@@ -96,6 +96,10 @@ public class FadeManager:Singleton<FadeManager>
                     break;
                 case SCENE_STATUS.GAME_CLEAR:
                     changeName = "GameClear";
+                    break;
+                    //アルファシーン用の物
+                case SCENE_STATUS.ALPHA_SCENE:
+                    changeName = "AlphaScene";
                     break;
                 case SCENE_STATUS.NONE:
                     break;

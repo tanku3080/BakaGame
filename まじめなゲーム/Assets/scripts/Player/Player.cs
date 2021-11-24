@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
         Debug.Log("脱糞完了");
         anime.SetTrigger("unko");
         endOfDappun = true;
+        BGMManager.Instance.BGMStop();
         Invoke("GoToGameOver", waitTime);
     }
     private void GoToGameOver() => GameManager.Instance.GameOver();

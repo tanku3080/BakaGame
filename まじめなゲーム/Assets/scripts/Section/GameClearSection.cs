@@ -34,7 +34,7 @@ public class GameClearSection : MonoBehaviour
             else if (collCount != 0 && reStartFalg)
             {
                 BGMManager.Instance.BGMStop();
-                FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.GAME_PLAY);
+                FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.ALPHA_SCENE);
             }
         }
     }

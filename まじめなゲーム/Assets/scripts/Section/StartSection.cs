@@ -29,7 +29,7 @@ public class StartSection : MonoBehaviour
             {
                 Debug.Log("押された");
                 BGMManager.Instance.BGMStop();
-                FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.GAME_PLAY);
+                FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.ALPHA_SCENE);
             }
         }
     }
