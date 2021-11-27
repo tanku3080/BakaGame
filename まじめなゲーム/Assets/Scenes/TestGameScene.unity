@@ -281,8 +281,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimit: 0
   timerText: {fileID: 1043203934}
-  totalTime: 100000
+  totalTime: 7
   player: {fileID: 531986867}
+  objs: []
 --- !u!4 &537637849
 Transform:
   m_ObjectHideFlags: 0
@@ -887,6 +888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyTime: 5
+  gravitySpeed: 0.05
+  box: {fileID: 0}
 --- !u!1 &2047432795
 GameObject:
   m_ObjectHideFlags: 0
