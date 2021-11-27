@@ -113,7 +113,7 @@ public class Onara : MonoBehaviour
             }
             if (hit.collider.CompareTag("eventEnemy"))
             {
-                hit.collider.gameObject
+                hit.collider.gameObject.GetComponent<EventNPCController>().NPCDie();
             }
         }
 
