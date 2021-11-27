@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
             player.transform.Rotate(playerSpeed * Vector3.up / 10000,h);
         }
 
-        if (onaraClass.jet == false)
+        if (onaraClass.jet == false && !endOfDappun)
         {
             if (v == 0 && h != 0)
             {

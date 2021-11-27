@@ -3,17 +3,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
+/// <summary>スコアを保存したり呼び出したりするクラス</summary>
 public class ScoreSave : MonoBehaviour
 {
 
     private static Dictionary<string, int> dic;
     private int rankOther = 0;
 
-    /// <summary>記録を保存する機能</summary>
+    /// <summary>記録を保存する機能で1ゲーム終了ごとにセーブを行う</summary>
     /// <param name="scoreValue">記録の値</param>
     /// <param name="scoreName">keyとなる文字列</param>
     public void Save(int scoreValue,string scoreName)
     {
+
         if (scoreValue > dic.Min().Value || dic.Count > 0)
         {
             PlayerPrefs.DeleteKey(dic.Min().Key);
@@ -21,6 +23,8 @@ public class ScoreSave : MonoBehaviour
         }
         else rankOther = scoreValue;
         dic.Add(scoreName, scoreValue);
+        dic.OrderBy(t => t.Value);
+
         PlayerPrefs.SetInt(scoreName, scoreValue);
         PlayerPrefs.Save();
     }
@@ -45,13 +49,8 @@ public class ScoreSave : MonoBehaviour
     }
 
     /// <summary>ランキングを表示するためのメソッド</summary>
-    public void ShowRank(Dictionary<string,int> input)
+    public void ShowRank(Text[] input)
     {
-        dic.OrderBy(t => t.Value);
-        foreach (var item in dic)
-        {
-            input.Add(item.Key,item.Value);
-        }
-        
+     
     }
 }

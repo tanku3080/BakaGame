@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
         else
         {
             totalTime -= Time.deltaTime;
-            timerText.text = "<color=red>Timer</color>" + ((int)totalTime).ToString();
+            timerText.text = "<color=red>Timer</color>" + $"<color=red>{(int)totalTime}</color>";
         }
     }
 
