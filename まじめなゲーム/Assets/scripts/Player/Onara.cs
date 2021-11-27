@@ -43,8 +43,13 @@ public class Onara : MonoBehaviour
 
     /// <summary>playerカメラを格納</summary>
     [SerializeField] CinemachineVirtualCamera playercam = null;
+
     /// <summary>飛行おなら音の格納</summary>
     [SerializeField] AudioClip jumpOnara = null;
+    /// <summary>脱糞音を追加する</summary>
+    [SerializeField] AudioClip dieOnara = null;
+    /// <summary>射撃を行うためのおなら</summary>
+    [SerializeField] AudioClip shotOnara = null;
 
     Rigidbody rd = null;
 
