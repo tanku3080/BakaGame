@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public abstract class NPCManager : MonoBehaviour
@@ -22,12 +20,6 @@ public abstract class NPCManager : MonoBehaviour
         anime = gameObject.GetComponent<Animation>();
         animator = GetComponent<Animator>();
         ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /// <summary>アニメーションを再生する</summary>

@@ -108,7 +108,12 @@ public class Onara : MonoBehaviour
         {
             if (hit.collider.CompareTag("bulid"))
             {
-
+                //建物に当たったらDestroyを使う。
+                hit.collider.gameObject.GetComponent<ObjController>().ObjDestroy();
+            }
+            if (hit.collider.CompareTag("eventEnemy"))
+            {
+                hit.collider.gameObject
             }
         }
 
