@@ -6,45 +6,62 @@ using UnityEngine;
 /// <summary>イベント用の物やオブジェクトをマップに生成するスクリプト</summary>
 public class PointEventGenerator : MonoBehaviour
 {
-    [SerializeField] List<Transform> eventPoint = null;
 
     /// <summary>生成するイベントの数(eventPointより多めに書かない事)</summary>
     [SerializeField] int instanceEventValue = 20;
 
+    /// <summary>イベント発生オブジェクト</summary>
+    private List<Transform> eventPoint = null;
+    /// <summary>イベントオブジェクトを入れる箱</summary>
+    [SerializeField] Transform eventObj = null;
+
     /// <summary>goalポイントの座標を入れる</summary>
-    [SerializeField] List<Transform> goalPoint = null;
+    private List<Transform> goalPoint = null;
+    /// <summary>イベントオブジェクトを入れる箱</summary>
+    [SerializeField] Transform goaltObj = null;
 
 
     //アイテムを生成する為の物
     [SerializeField] GameObject item = null;
-    [SerializeField] List<Transform> itemPos = null;
-    [SerializeField] int itemIncetanceValue = 20;
+    private List<Transform> itemPos = null;
+    [SerializeField] Transform itemObj = null;
+    [SerializeField,Tooltip("数は必ず3つのオブジェクトの最高数以下にする")] int itemIncetanceValue = 20;
     // Start is called before the first frame update
     void Start()
     {
+        /*
         GoalPointIncetance();
         EventPointIncetance();
+        */
         ItemPointIncetance();
     }
+
+    /*オブジェクトを配置する際には地面と接触しないようにかつ、地面に近づけて配置、登録してください。*/
+
+
+    /// <summary>Goal位置を与えられた値から一つ選んで出現させる。</summary>
     private void GoalPointIncetance()
     {
 
-        goalPoint = goalPoint.OrderBy(a => Guid.NewGuid()).ToList();
+        goalPoint = ObjSetUp(goaltObj).OrderBy(a => Guid.NewGuid()).ToList();
 
         var endPoint = Instantiate((GameObject)Resources.Load("toilet"), goalPoint.First());
     }
 
+    /// <summary>おならバーを回復させるアイテムを設置する</summary>
     private void ItemPointIncetance()
     {
-        itemPos = itemPos.OrderBy(a => Guid.NewGuid()).ToList();
+        itemPos = ObjSetUp(itemObj).OrderBy(a => Guid.NewGuid()).ToList();
         for (int i = 0; i < itemIncetanceValue; i++)
         {
             //暴漢が用意できないために仮のNPCを実装
             var n = Instantiate((GameObject)Resources.Load("item"), itemPos[i]);
+
         }
 
     }
 
+    /// <summary>イベント用NPCを配置する処理を作る</summary>
     private void EventPointIncetance()
     {
         //もしも
@@ -55,11 +72,21 @@ public class PointEventGenerator : MonoBehaviour
         }
 
 
-        eventPoint = eventPoint.OrderBy(a => Guid.NewGuid()).ToList();
+        eventPoint = ObjSetUp(eventObj).OrderBy(a => Guid.NewGuid()).ToList();
         for (int i = 0; i < instanceEventValue; i++)
         {
             //暴漢が用意できないために仮のNPCを実装
             var n = Instantiate((GameObject)Resources.Load("NPC1"), eventPoint[i]);
         }
+    }
+
+    private List<Transform> ObjSetUp(Transform obj)
+    {
+        List<Transform> list = new List<Transform>();
+        for (int i = 0; i < obj.childCount; i++)
+        {
+            list.Add(obj.transform.GetChild(i));
+        }
+        return list;
     }
 }
