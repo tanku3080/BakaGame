@@ -434,6 +434,7 @@ MonoBehaviour:
   onaraShotCost: 50
   onaraRange: 1
   onaraJetCost: 2
+  reCoverCost: 50
   bom: {fileID: 2917599134704187391, guid: 8d15b074a17c0f44c8df5467f34f083b, type: 3}
   playercam: {fileID: 1973256643}
   jumpOnara: {fileID: 0}
@@ -450,9 +451,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498064934236084115}
   serializedVersion: 2
-  m_Mass: 750
+  m_Mass: 200
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 500
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

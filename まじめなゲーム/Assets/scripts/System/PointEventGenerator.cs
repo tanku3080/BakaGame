@@ -8,7 +8,7 @@ public class PointEventGenerator : MonoBehaviour
 {
 
     /// <summary>生成するイベントの数(eventPointより多めに書かない事)</summary>
-    [SerializeField] int instanceEventValue = 20;
+    [SerializeField] int EventInstanceValue = 20;
 
     /// <summary>イベント発生オブジェクト</summary>
     private List<Transform> eventPoint = null;
@@ -65,15 +65,15 @@ public class PointEventGenerator : MonoBehaviour
     private void EventPointIncetance()
     {
         //もしも
-        if (eventPoint.Count < instanceEventValue)
+        if (eventPoint.Count < EventInstanceValue)
         {
             Debug.Log("数が釣り合っていないので初期値に修正");
-            instanceEventValue = 20;
+            EventInstanceValue = 20;
         }
 
 
         eventPoint = ObjSetUp(eventObj).OrderBy(a => Guid.NewGuid()).ToList();
-        for (int i = 0; i < instanceEventValue; i++)
+        for (int i = 0; i < EventInstanceValue; i++)
         {
             //暴漢が用意できないために仮のNPCを実装
             var n = Instantiate((GameObject)Resources.Load("NPC1"), eventPoint[i]);

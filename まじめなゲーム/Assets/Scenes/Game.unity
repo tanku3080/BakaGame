@@ -42833,11 +42833,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1734031273069380852, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6909311362401918007, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -52417,14 +52412,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa3460924855004da1fafdd6431ea73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventPoint: []
-  eventObjs: []
-  instanceEventValue: 20
-  goalPoint: []
-  goalObjs: []
+  EventInstanceValue: 20
+  eventObj: {fileID: 0}
+  goaltObj: {fileID: 0}
   item: {fileID: 0}
-  itemPos: []
-  itemObjs: []
+  itemObj: {fileID: 1198580569}
   itemIncetanceValue: 20
 --- !u!1 &1888739066 stripped
 GameObject:

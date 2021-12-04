@@ -37,6 +37,8 @@ public class Onara : MonoBehaviour
     [SerializeField] float onaraRange = 1f;
     /// <summary>飛行の使用毎フレームの消費コスト</summary>
     [SerializeField] float onaraJetCost = 2f;
+    /// <summary>アイテム取得時に回復する値</summary>
+    [SerializeField,Tooltip("アイテム取得時にに回復する値")] float reCoverCost = 50f;
     /// <summary>爆弾を入れる</summary>
     [SerializeField] GameObject bom = null;
 
@@ -193,6 +195,15 @@ public class Onara : MonoBehaviour
         {
             isGrand = false;
             Debug.Log("離脱");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("item"))
+        {
+            collision.gameObject.GetComponent<ItemController>().MyDestroy();
+            onaraBar.value += reCoverCost;
         }
     }
 }
