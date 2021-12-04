@@ -16,8 +16,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //var mouseH = Input.GetAxis("Mouse H");
-        //var mouseY = Input.GetAxis("Mouse Y");
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 

@@ -78,4 +78,12 @@ public class ObjectsAddComponent : MonoBehaviour
             }
         }
     }
+    [MenuItem("Editor/ObjLayerSet")]
+    private static void LayerSet()
+    {
+        foreach (var item in SearchObj())
+        {
+            item.layer = 9;
+        }
+    }
 }

@@ -269,7 +269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimit: 0
   timerText: {fileID: 2054990900}
-  totalTime: 7
+  totalTime: 1000
   player: {fileID: 1713297659}
   objs: []
 --- !u!4 &537637849
@@ -939,11 +939,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1734031273069380852, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6909311362401918007, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -953,11 +948,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7186697912191230169, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166b5541d7c57bd41a990e5fcf2c9b51, type: 3}

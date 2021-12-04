@@ -133,8 +133,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973256641}
-  m_LocalRotation: {x: 0.08165164, y: -0, z: -0, w: 0.99666095}
-  m_LocalPosition: {x: 0, y: 1.48, z: -8.972006}
+  m_LocalRotation: {x: 0.08165173, y: -0, z: -0, w: 0.99666095}
+  m_LocalPosition: {x: 0, y: 1.48, z: -8.971996}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 587763120}
@@ -434,7 +434,7 @@ MonoBehaviour:
   onaraShotCost: 50
   onaraRange: 1
   onaraJetCost: 2
-  bom: {fileID: 0}
+  bom: {fileID: 2917599134704187391, guid: 8d15b074a17c0f44c8df5467f34f083b, type: 3}
   playercam: {fileID: 1973256643}
   jumpOnara: {fileID: 0}
   dieOnara: {fileID: 0}
@@ -456,7 +456,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &7186697912191230169
 BoxCollider:
@@ -485,7 +485,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2903,6 +2903,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830859275929525866, guid: a7c5267505a60df408cbc4b5a0b9b7a3,
+        type: 3}
+      propertyPath: m_Name
+      value: timerText
       objectReference: {fileID: 0}
     - target: {fileID: 3234462305975642677, guid: a7c5267505a60df408cbc4b5a0b9b7a3,
         type: 3}

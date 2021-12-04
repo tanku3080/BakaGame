@@ -65,7 +65,7 @@ public class Onara : MonoBehaviour
 
     [HideInInspector] public bool jet = false;
     /// <summary>ボムが登録されているかを判定するのに使う</summary>
-    [SerializeField] GameObject bomObj = null;
+    [HideInInspector] public GameObject bomObj = null;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +84,10 @@ public class Onara : MonoBehaviour
             {
                 Debug.Log("爆弾");
                 OnaraParameter(onaraBomCost);
-                bomObj = Instantiate(bom, player.transform.position - new Vector3(0, 0, 0.1f), Quaternion.identity);
+                var playerPos = player.transform.position;
+
+                bomObj = Instantiate(bom, playerPos - new Vector3(
+                    0, -0.1f,0.1f), Quaternion.identity);
             }
 
             if (Input.GetMouseButtonUp(0) && onarashotKey == false)
@@ -111,7 +114,7 @@ public class Onara : MonoBehaviour
                 //建物に当たったらDestroyを使う。
                 hit.collider.gameObject.GetComponent<ObjController>().ObjDestroy();
             }
-            if (hit.collider.CompareTag("eventEnemy"))
+            else if (hit.collider.CompareTag("eventEnemy"))
             {
                 hit.collider.gameObject.GetComponent<EventNPCController>().NPCDie();
             }
