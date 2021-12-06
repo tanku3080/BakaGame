@@ -108,10 +108,11 @@ public class Onara : MonoBehaviour
     {
         float timeDalta = 0f;
         RaycastHit hit;
+        Debug.DrawRay(transform.position,transform.forward,Color.red,onaraRange);
         //射撃を行うコードをここに書く
-        if (Physics.Raycast(transform.position,Vector3.forward,out hit,onaraRange))
+        if (Physics.Raycast(transform.position,transform.forward,out hit,onaraRange))
         {
-            if (hit.collider.CompareTag("bulid"))
+            if (hit.collider.CompareTag("build"))
             {
                 //建物に当たったらDestroyを使う。
                 hit.collider.gameObject.GetComponent<ObjController>().ObjDestroy();
