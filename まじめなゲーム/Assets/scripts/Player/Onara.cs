@@ -37,14 +37,21 @@ public class Onara : MonoBehaviour
     [SerializeField] float onaraRange = 1f;
     /// <summary>飛行の使用毎フレームの消費コスト</summary>
     [SerializeField] float onaraJetCost = 2f;
+    /// <summary>アイテム取得時に回復する値</summary>
+    [SerializeField,Tooltip("アイテム取得時にに回復する値")] float reCoverCost = 50f;
     /// <summary>爆弾を入れる</summary>
     [SerializeField] GameObject bom = null;
 
 
     /// <summary>playerカメラを格納</summary>
     [SerializeField] CinemachineVirtualCamera playercam = null;
+
     /// <summary>飛行おなら音の格納</summary>
     [SerializeField] AudioClip jumpOnara = null;
+    /// <summary>脱糞音を追加する</summary>
+    [SerializeField] AudioClip dieOnara = null;
+    /// <summary>射撃を行うためのおなら</summary>
+    [SerializeField] AudioClip shotOnara = null;
 
     Rigidbody rd = null;
 
@@ -60,7 +67,7 @@ public class Onara : MonoBehaviour
 
     [HideInInspector] public bool jet = false;
     /// <summary>ボムが登録されているかを判定するのに使う</summary>
-    [SerializeField] GameObject bomObj = null;
+    [HideInInspector] public GameObject bomObj = null;
 
     // Start is called before the first frame update
     void Start()
@@ -79,7 +86,10 @@ public class Onara : MonoBehaviour
             {
                 Debug.Log("爆弾");
                 OnaraParameter(onaraBomCost);
-                bomObj = Instantiate(bom, player.transform.position - new Vector3(0, 0, 0.1f), Quaternion.identity);
+                var playerPos = player.transform.position;
+
+                bomObj = Instantiate(bom, playerPos - new Vector3(
+                    0, -0.1f,0.1f), Quaternion.identity);
             }
 
             if (Input.GetMouseButtonUp(0) && onarashotKey == false)
@@ -103,7 +113,12 @@ public class Onara : MonoBehaviour
         {
             if (hit.collider.CompareTag("bulid"))
             {
-
+                //建物に当たったらDestroyを使う。
+                hit.collider.gameObject.GetComponent<ObjController>().ObjDestroy();
+            }
+            else if (hit.collider.CompareTag("eventEnemy"))
+            {
+                hit.collider.gameObject.GetComponent<EventNPCController>().NPCDie();
             }
         }
 
@@ -180,6 +195,15 @@ public class Onara : MonoBehaviour
         {
             isGrand = false;
             Debug.Log("離脱");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("item"))
+        {
+            collision.gameObject.GetComponent<ItemController>().MyDestroy();
+            onaraBar.value += reCoverCost;
         }
     }
 }
