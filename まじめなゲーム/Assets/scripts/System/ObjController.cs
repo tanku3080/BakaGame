@@ -9,6 +9,10 @@ public class ObjController : MonoBehaviour
     [SerializeField] BoxCollider box = null;
     private Rigidbody rd = null;
 
+
+    /// <summary>オブジェクトがDestoyされるまでの時間</summary>
+    [SerializeField] readonly float objdestroyTime = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,8 @@ public class ObjController : MonoBehaviour
         box.enabled = false;
         rd.useGravity = true;
         rd.constraints = RigidbodyConstraints.None;
+
+        Destroy(gameObject,objdestroyTime);
     }
 
 

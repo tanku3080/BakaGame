@@ -9,6 +9,7 @@ public class ItemController : MonoBehaviour
     /// <summary>上下運動を遅らす処理</summary>
     [SerializeField] float delayTime = 0.8f;
     private float firstPos = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +26,6 @@ public class ItemController : MonoBehaviour
     public void MyDestroy()
     {
         Destroy(gameObject);
+        Destroy(gameObject,delayTime);
     }
 }
