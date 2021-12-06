@@ -108,8 +108,9 @@ public class Onara : MonoBehaviour
     {
         float timeDalta = 0f;
         RaycastHit hit;
+        Debug.DrawRay(transform.position,Vector3.back,Color.red,onaraRange);
         //射撃を行うコードをここに書く
-        if (Physics.Raycast(transform.position,Vector3.forward,out hit,onaraRange))
+        if (Physics.Raycast(transform.position,Vector3.back,out hit,onaraRange))
         {
             if (hit.collider.CompareTag("bulid"))
             {
