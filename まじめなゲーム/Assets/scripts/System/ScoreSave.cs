@@ -7,7 +7,7 @@ using System.Linq;
 public class ScoreSave : Singleton<ScoreSave>
 {
 
-    private static Dictionary<string, int> dic;
+    private static readonly Dictionary<string, int> dic;
     private int rankOther = 0;
 
     /// <summary>記録を保存する機能で1ゲーム終了ごとにセーブを行う</summary>
@@ -37,20 +37,27 @@ public class ScoreSave : Singleton<ScoreSave>
         {
             Debug.Log("ランキング外");
             systemInput.text = "ランキング外です";
-            //ここにランキング外だった事を表示するテキストを出す
             return;
         }
         else
         {
             Debug.Log("ランキング入り");
             systemInput.text = $"現在の順位は<color=red>{rankOther}位です！</color>";
-            //ここにランキングテキスト群を表示する
+
+            rankOther = 0;//元に戻す
         }
     }
 
-    /// <summary>ランキングを表示するためのメソッド</summary>
-    public void ShowRank(Text[] input)
+    /// <summary>1～3までのランキングを表示するためのメソッド</summary>
+    /// <param name="objs">攻撃するための処理</param>
+    public void ShowRank(GameObject objs)
     {
-     
+        int number = 0;
+        foreach (var item in dic)
+        {
+            Text text = objs.transform.GetChild(number).GetComponent<Text>();
+            text.text = item.Value + item.Key;
+            number++;
+        }
     }
 }
