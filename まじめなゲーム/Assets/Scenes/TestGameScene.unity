@@ -238,12 +238,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!54 &501464643 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3412589433883852152, guid: 3880f8bfaacfb6843880b99fa38284f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 569695382}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &537637847
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +301,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointUI: {fileID: 1283071332}
-  pointValue: 0
 --- !u!1001 &569695382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -373,21 +366,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3880f8bfaacfb6843880b99fa38284f3, type: 3}
---- !u!54 &680016460 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 8045637092507104770, guid: 3880f8bfaacfb6843880b99fa38284f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 569695382}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &908117655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 3880f8bfaacfb6843880b99fa38284f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 569695382}
-  m_PrefabAsset: {fileID: 0}
---- !u!111 &908117657 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 11100000, guid: 3880f8bfaacfb6843880b99fa38284f3,
     type: 3}
   m_PrefabInstance: {fileID: 569695382}
   m_PrefabAsset: {fileID: 0}
@@ -407,24 +388,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &908117660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908117655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e752a2a7950489044bf3a4c263ebe64f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anime: {fileID: 908117657}
-  animator: {fileID: 908117661}
-  ragdollRigidbodies:
-  - {fileID: 680016460}
-  - {fileID: 501464643}
-  die: 0
 --- !u!95 &908117661
 Animator:
   serializedVersion: 3
