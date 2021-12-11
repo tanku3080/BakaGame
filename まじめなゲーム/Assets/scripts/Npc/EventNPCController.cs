@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 public class EventNPCController : NPCManager
 {
@@ -12,17 +10,14 @@ public class EventNPCController : NPCManager
 
     private bool die = false;
 
+    /// <summary>アタッチしているオブジェクトの撃破ポイント</summary>
+    [SerializeField] readonly int eventPointValue = 50;
+
     void Start()
     {
         agent = gameObject.GetComponent<NavMeshAgent>();
 
         EnemyRoutine(ENEMY_STATE.MOVE);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void EnemyRoutine(ENEMY_STATE sTATE)
@@ -40,6 +35,8 @@ public class EventNPCController : NPCManager
     /// <summary>eventNPCが死亡したら呼ばれる。</summary>
     public void NPCDie()
     {
+        PointController.Instance.PointSet(eventPointValue);
         die = true;
+        EnemyRoutine(ENEMY_STATE.DIE);
     }
 }
