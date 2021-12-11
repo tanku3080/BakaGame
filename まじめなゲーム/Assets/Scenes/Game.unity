@@ -52409,7 +52409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimit: 0
   timerText: {fileID: 1513842919}
-  totalTime: 30
+  totalTime: 1000
   player: {fileID: 1513842918}
   objs: []
 --- !u!4 &1888391527
