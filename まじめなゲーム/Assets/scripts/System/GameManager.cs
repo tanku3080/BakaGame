@@ -41,6 +41,7 @@ public class GameManager : Singleton<GameManager>
         if (totalTime < 0)
         {
             timeLimit = true;
+            PointController.Instance.GameEndPointSeve();
             return;
         }
         else

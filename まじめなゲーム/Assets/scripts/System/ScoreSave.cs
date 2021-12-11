@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Linq;
 
 /// <summary>スコアを保存したり呼び出したりするクラス</summary>
-public class ScoreSave : MonoBehaviour
+public class ScoreSave : Singleton<ScoreSave>
 {
 
     private static Dictionary<string, int> dic;

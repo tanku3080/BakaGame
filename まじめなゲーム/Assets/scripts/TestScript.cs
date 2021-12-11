@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class TestScript : MonoBehaviour
 {
+    //スコア関連のフィールド定義
+    /*
     [SerializeField] ScoreSave saveScript = null;
 
     //ランキングに入ったか否かを表示するUI
@@ -15,9 +17,12 @@ public class TestScript : MonoBehaviour
 
     [SerializeField] int velue = 1;
     [SerializeField] string playerName = "tasuku";
+    */
     // Update is called once per frame
     void Update()
     {
+        //スコア関連の処理
+        /*
         if (Input.GetKeyUp(KeyCode.S))
         {
             saveScript.Save(velue,playerName);
@@ -32,5 +37,7 @@ public class TestScript : MonoBehaviour
         {
             saveScript.ShowRank(texts);
         }
+        ]
+        */
     }
 }

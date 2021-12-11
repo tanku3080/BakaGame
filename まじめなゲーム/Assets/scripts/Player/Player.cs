@@ -51,6 +51,13 @@ public class Player : MonoBehaviour
             Dappun();
         }
 
+        
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            Debug.Log("ポイントの処理試作");
+            PointController.Instance.PointSet(3);
+        }
+
     }
 
     /// <summary>おもらし処理(仮)</summary>
