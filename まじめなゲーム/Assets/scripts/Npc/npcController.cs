@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class NpcController : NPCManager
+public class npcController : NPCManager
 {
     bool isDie = false;
     // Start is called before the first frame update
