@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 400000}
   - component: {fileID: 11100000}
-  - component: {fileID: 4601365076588009646}
-  - component: {fileID: 3249762001979021316}
+  - component: {fileID: -1476620888906113102}
+  - component: {fileID: -907490045673759109}
   m_Layer: 0
   m_Name: NPC1
   m_TagString: Untagged
@@ -56,7 +56,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
---- !u!95 &4601365076588009646
+--- !u!95 &-1476620888906113102
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3249762001979021316
+--- !u!114 &-907490045673759109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,10 +87,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e752a2a7950489044bf3a4c263ebe64f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anime: {fileID: 11100000}
-  animator: {fileID: 4601365076588009646}
-  ragdollRigidbodies: []
-  die: 0
+  anime: {fileID: 0}
+  animator: {fileID: 0}
+  ragdollRigidbodies:
+  - {fileID: 8045637092507104770}
+  - {fileID: 3412589433883852152}
+  - {fileID: 7753362956189239670}
+  - {fileID: 6040326132460845595}
+  - {fileID: 3723892184640850220}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
