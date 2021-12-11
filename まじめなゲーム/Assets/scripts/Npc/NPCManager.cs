@@ -3,11 +3,10 @@
 [RequireComponent(typeof(Animator))]
 public abstract class NPCManager : MonoBehaviour
 {
-    string animeName = null;
     public Animation anime = null;
     [HideInInspector] public enum ANIME_STATE
     {
-        IDOL, POSITIVE1, POSITIVE2, HAPPY1, HAPPY2, HAPPY3, SELECT
+        IDOL, POSITIVE1, POSITIVE2, HAPPY1, HAPPY2, HAPPY3
     }
 
 
@@ -47,16 +46,8 @@ public abstract class NPCManager : MonoBehaviour
             case ANIME_STATE.HAPPY3:
                 anime.clip = anime.GetClip("celebration3");
                 break;
-            case ANIME_STATE.SELECT:
-                if (animeName == "idle") AnimePlay(ANIME_STATE.POSITIVE1);
-                else if (animeName == "applause") AnimePlay(ANIME_STATE.POSITIVE2);
-                else if (animeName == "applause2") AnimePlay(ANIME_STATE.HAPPY1);
-                else if (animeName == "celebration") AnimePlay(ANIME_STATE.HAPPY2);
-                else if (animeName == "celebration2") AnimePlay(ANIME_STATE.HAPPY3);
-                else if (animeName == "celebration3") AnimePlay(ANIME_STATE.POSITIVE1);
-                break;
         }
-        animeName = anime.clip.name;
+        anime.wrapMode = WrapMode.Loop;
         anime.Play();
     }
 

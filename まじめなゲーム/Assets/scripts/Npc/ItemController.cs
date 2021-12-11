@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
@@ -9,6 +7,9 @@ public class ItemController : MonoBehaviour
     /// <summary>上下運動を遅らす処理</summary>
     [SerializeField] float delayTime = 0.8f;
     private float firstPos = 0;
+
+    /// <summary>アイテム取得時のポイント/// </summary>
+    [SerializeField,Tooltip("アイテムのポイント")] int itemPointValue = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class ItemController : MonoBehaviour
     /// <summary>プレイヤーが触れたら破壊する</summary>
     public void MyDestroy()
     {
+        PointController.Instance.PointSet(itemPointValue);
         Destroy(gameObject);
         Destroy(gameObject,delayTime);
     }
