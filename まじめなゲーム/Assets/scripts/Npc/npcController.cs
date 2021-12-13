@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class npcController : NPCManager
+[RequireComponent(typeof(BoxCollider))]
+public class NpcController : NPCManager
 {
     public bool die = false;
+    private BoxCollider collider = null;
     // Start is called before the first frame update
     void Start()
     {
+        collider = gameObject.GetComponent<BoxCollider>();
         SetRagdoll(false);
         MoveSet(Random.Range(1, 5));
     }
@@ -44,11 +47,14 @@ public class npcController : NPCManager
         }
     }
 
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("接触成功");
             anime.Stop();
+            collider.enabled = true;
             die = true;
         }
     }
