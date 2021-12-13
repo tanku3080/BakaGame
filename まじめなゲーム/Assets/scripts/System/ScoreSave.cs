@@ -7,7 +7,7 @@ using System.Linq;
 public class ScoreSave : Singleton<ScoreSave>
 {
 
-    private static readonly Dictionary<string, int> dic;
+    private static readonly Dictionary<string, int> dic = new Dictionary<string, int>();
     private int rankOther = 0;
 
     /// <summary>記録を保存する機能で1ゲーム終了ごとにセーブを行う</summary>
@@ -15,15 +15,17 @@ public class ScoreSave : Singleton<ScoreSave>
     /// <param name="scoreName">keyとなる文字列</param>
     public void Save(int scoreValue,string scoreName)
     {
-
-        if (scoreValue > dic.Min().Value || dic.Count > 0)
+        if (dic.Count > 0)
         {
-            PlayerPrefs.DeleteKey(dic.Min().Key);
-            dic.Remove(dic.Min().Key);
+            if (scoreValue > dic.Min().Value)
+            {
+                PlayerPrefs.DeleteKey(dic.Min().Key);
+                dic.Remove(dic.Min().Key);
+            }
+            else rankOther = scoreValue;
+            dic.Add(scoreName, scoreValue);
+            dic.OrderBy(t => t.Value);
         }
-        else rankOther = scoreValue;
-        dic.Add(scoreName, scoreValue);
-        dic.OrderBy(t => t.Value);
 
         PlayerPrefs.SetInt(scoreName, scoreValue);
         PlayerPrefs.Save();

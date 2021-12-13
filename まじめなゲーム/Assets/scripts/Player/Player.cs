@@ -57,6 +57,12 @@ public class Player : MonoBehaviour
             Debug.Log("ポイントの処理試作");
             PointController.Instance.PointSet(3);
         }
+        if (Input.GetKeyUp(KeyCode.B))
+        {
+            Debug.Log("特殊");
+            PointController.Instance.GameEndPointSeve();
+            GameManager.Instance.GameClear();
+        }
 
     }
 

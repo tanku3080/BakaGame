@@ -60,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     {
         PointController.Instance.GameEndPointSeve();
         BGMManager.Instance.BGMStop();
-        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.02f,true,"GameClear");
+        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.02f,true,"Ranking");
     }
 
 
