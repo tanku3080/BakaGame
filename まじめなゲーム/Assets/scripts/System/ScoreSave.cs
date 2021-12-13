@@ -23,9 +23,12 @@ public class ScoreSave : Singleton<ScoreSave>
                 dic.Remove(dic.Min().Key);
             }
             else rankOther = scoreValue;
-            dic.Add(scoreName, scoreValue);
-            dic.OrderBy(t => t.Value);
         }
+        if (scoreName == dic.ContainsKey(scoreName).ToString())
+        {
+            dic.Add(scoreName + "_2", scoreValue);
+        }
+        else dic.OrderBy(t => t.Value);
 
         PlayerPrefs.SetInt(scoreName, scoreValue);
         PlayerPrefs.Save();
@@ -57,6 +60,7 @@ public class ScoreSave : Singleton<ScoreSave>
         int number = 0;
         foreach (var item in dic)
         {
+            Debug.Log($"ランキングテキスト{item.Key}と{item.Value}");
             Text text = objs.transform.GetChild(number).GetComponent<Text>();
             text.text = item.Value + item.Key;
             number++;
