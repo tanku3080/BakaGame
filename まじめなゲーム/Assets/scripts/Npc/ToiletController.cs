@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ToiletController : MonoBehaviour
 {
@@ -9,6 +7,7 @@ public class ToiletController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
+            other.gameObject.GetComponent<Player>().endOfDappun = true;
             GameManager.Instance.GameClear();
         }
     }

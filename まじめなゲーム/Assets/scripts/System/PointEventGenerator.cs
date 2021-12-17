@@ -47,10 +47,12 @@ public class PointEventGenerator : MonoBehaviour
     /// <summary>おならバーを回復させるアイテムを設置する</summary>
     private void ItemPointIncetance()
     {
+
         itemPos = ObjSetUp(itemObj).OrderBy(a => Guid.NewGuid()).ToList();
+
         for (int i = 0; i < itemIncetanceValue; i++)
         {
-            //暴漢が用意できないために仮のNPCを実装
+            //物が用意できないために仮のNPCを実装
             var n = Instantiate((GameObject)Resources.Load("item"), itemPos[i]);
 
         }
@@ -60,6 +62,7 @@ public class PointEventGenerator : MonoBehaviour
     /// <summary>イベント用NPCを配置する処理を作る</summary>
     private void EventPointIncetance()
     {
+        eventPoint = ObjSetUp(eventObj).OrderBy(a => Guid.NewGuid()).ToList();
         //もしも
         if (eventPoint.Count < EventInstanceValue)
         {
@@ -67,8 +70,6 @@ public class PointEventGenerator : MonoBehaviour
             EventInstanceValue -= 10;
         }
 
-
-        eventPoint = ObjSetUp(eventObj).OrderBy(a => Guid.NewGuid()).ToList();
         for (int i = 0; i < EventInstanceValue; i++)
         {
             //暴漢が用意できないために仮のNPCを実装

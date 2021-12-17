@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     /// <summary>タイムリミットになったらTrueにする</summary>
-    public bool timeLimit = false;
+    [HideInInspector] public bool timeLimit = false;
     public Text timerText;
     [SerializeField] float totalTime =180;
     [SerializeField] Player player = null;

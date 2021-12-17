@@ -36,7 +36,6 @@ public class RankingSection : MonoBehaviour
             {
                 Debug.Log("押された");
                 BGMManager.Instance.BGMStop();
-                FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.START);
             }
         }
     }
@@ -46,12 +45,14 @@ public class RankingSection : MonoBehaviour
         FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN, 0.002f);
         collCount++;
         actionFalg = true;
+        FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.START);
     }
     public void GoReStartButton()
     {
         FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN, 0.002f);
         collCount++;
         actionFalg = true;
+        FadeManager.Instance.SceneChangeSystem(FadeManager.SCENE_STATUS.GAME_PLAY);
     }
 
 }
