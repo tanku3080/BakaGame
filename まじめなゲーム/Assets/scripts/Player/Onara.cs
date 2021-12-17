@@ -46,6 +46,7 @@ public class Onara : MonoBehaviour
     /// <summary>playerカメラを格納</summary>
     [SerializeField] CinemachineVirtualCamera playercam = null;
 
+    AudioSource audioSource;
     /// <summary>飛行おなら音の格納</summary>
     [SerializeField] AudioClip jumpOnara = null;
     /// <summary>脱糞音を追加する</summary>
@@ -69,9 +70,12 @@ public class Onara : MonoBehaviour
     /// <summary>ボムが登録されているかを判定するのに使う</summary>
     [HideInInspector] public GameObject bomObj = null;
 
+    private bool flag = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rd = player.gameObject.GetComponent<Rigidbody>();
         onaraBar.maxValue = onaraBarMaxValue;
         onaraBar.value = onaraBarMaxValue;
@@ -148,6 +152,7 @@ public class Onara : MonoBehaviour
                 rd.AddForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                 OnaraParameter(onaraJetCost);
                 onaraJetSystem.Play();
+                OnaraJumpSound(true);
             }
             else
             {
@@ -156,11 +161,13 @@ public class Onara : MonoBehaviour
                     rd.AddRelativeForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                     OnaraParameter(onaraJetCost);
                     onaraJetSystem.Play();
+                    OnaraJumpSound(true);
                 }
             }
         }
         else
         {
+            OnaraJumpSound(false);
             onaraJetSystem.Stop();
             if (grandKey)
             {
@@ -210,6 +217,23 @@ public class Onara : MonoBehaviour
         {
             collision.gameObject.GetComponent<ItemController>().MyDestroy();
             onaraBar.value += reCoverCost;
+        }
+    }
+
+    private void OnaraJumpSound(bool value)
+    {
+        if (value)
+        {
+            if (!flag)
+            {
+                audioSource.Play();
+                flag = true;
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+            flag = false;
         }
     }
 }
