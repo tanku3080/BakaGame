@@ -1078,6 +1078,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: jumpOnara
+      value: 
+      objectReference: {fileID: 8300000, guid: 1678fb681221f9d4aa7375cd068d539c, type: 3}
+    - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: dieOnara
+      value: 
+      objectReference: {fileID: 8300000, guid: e80c9f630dfc8e545a30498f3fab3e32, type: 3}
+    - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: shotOnara
+      value: 
+      objectReference: {fileID: 8300000, guid: fd68dd87593562b4086bf9152fef1dd6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166b5541d7c57bd41a990e5fcf2c9b51, type: 3}
 --- !u!1001 &8716315672884041368

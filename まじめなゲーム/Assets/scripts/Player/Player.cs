@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.B))
         {
             Debug.Log("特殊");
-            PointController.Instance.GameEndPointSeve();
             GameManager.Instance.GameClear();
         }
 

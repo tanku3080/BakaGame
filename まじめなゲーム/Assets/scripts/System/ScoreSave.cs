@@ -8,37 +8,38 @@ public class ScoreSave : Singleton<ScoreSave>
 {
 
     private static readonly Dictionary<string, int> dic = new Dictionary<string, int>();
-    private int rankOther = 0;
+    private int[] inputValue = new int[3];
+    private static int rankOther = 0;
 
     /// <summary>記録を保存する機能で1ゲーム終了ごとにセーブを行う</summary>
     /// <param name="scoreValue">記録の値</param>
-    /// <param name="scoreName">keyとなる文字列</param>
-    public void Save(int scoreValue,string scoreName)
+    public void Save(int scoreValue)
     {
-        Debug.Log("せーぶされた");
-        if (dic.Count > 0)
+        rankOther = 0;
+
+        for (int i = 0; i < inputValue.Length; i++)
         {
-            if (scoreValue > dic.Min().Value || dic.Count > 3)
+            if (!PlayerPrefs.HasKey(i.ToString()))
             {
-                PlayerPrefs.DeleteKey(dic.Min().Key);
-                dic.Remove(dic.Min().Key);
+                Debug.Log("ここにはきた");
+                //存在しなかったら入れる
+                PlayerPrefs.SetInt(i.ToString(), scoreValue);
+                dic.Add(i.ToString(), scoreValue);
+            }
+            else
+            {
+                if (dic.ContainsKey(i.ToString()))
+                {
+                    dic.Remove(i.ToString());
+                }
+                dic.Add(i.ToString(),PlayerPrefs.GetInt(i.ToString()));
             }
         }
         dic.OrderBy(t => t.Value);
-        for (int i = 0; i < dic.Count; i++)
-        {
-            if (dic.ContainsKey(scoreName))
-            {
-                rankOther = i;
-                break;
-            }
-        }
 
-        PlayerPrefs.SetInt(scoreName, scoreValue);
-        PlayerPrefs.Save();
-        foreach (var item in dic)
+        for (int i = 0; i <= dic.Count; i++)
         {
-            Debug.Log(item.Value + item.Key);
+            if (dic.ContainsKey(i.ToString())) rankOther = i;
         }
     }
 
@@ -56,8 +57,6 @@ public class ScoreSave : Singleton<ScoreSave>
         {
             Debug.Log("ランキング入り");
             systemInput.text = $"現在の順位は<color=red>{rankOther}位です！</color>";
-
-            rankOther = 0;//元に戻す
         }
     }
 
@@ -68,10 +67,9 @@ public class ScoreSave : Singleton<ScoreSave>
         int number = 0;
         foreach (var item in dic)
         {
-            Debug.Log($"ランキングテキスト{item.Key}と{item.Value}");
             Text text = objs.transform.GetChild(number).GetComponent<Text>();
-            text.text = item.Value + item.Key;
             number++;
+            text.text = $"{number}位：{item.Value}";
         }
     }
 }
