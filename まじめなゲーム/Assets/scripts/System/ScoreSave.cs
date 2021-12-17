@@ -7,7 +7,7 @@ using System.Linq;
 public class ScoreSave : Singleton<ScoreSave>
 {
 
-    private static readonly Dictionary<string, int> dic = new Dictionary<string, int>();
+    private readonly Dictionary<string, int> dic = new Dictionary<string, int>();
     private int[] inputValue = new int[3];
     private static int rankOther = 0;
 
@@ -19,11 +19,11 @@ public class ScoreSave : Singleton<ScoreSave>
 
         for (int i = 0; i < inputValue.Length; i++)
         {
-            if (!PlayerPrefs.HasKey(i.ToString()))
+            if (!PlayerPrefs.HasKey(inputValue[i].ToString()))
             {
                 Debug.Log("ここにはきた");
                 //存在しなかったら入れる
-                PlayerPrefs.SetInt(i.ToString(), scoreValue);
+                PlayerPrefs.SetInt(inputValue[i].ToString(), scoreValue);
                 dic.Add(i.ToString(), scoreValue);
             }
             else
@@ -32,17 +32,24 @@ public class ScoreSave : Singleton<ScoreSave>
                 //keyに合致したらこの処理を行う
                 if (dic.ContainsKey(i.ToString()))
                 {
-                    dic.Remove(i.ToString());
+                    dic.Remove(inputValue[i].ToString());
                 }
-                dic.Add(i.ToString(),PlayerPrefs.GetInt(i.ToString()));
+                dic.Add(i.ToString(),PlayerPrefs.GetInt(inputValue[i].ToString()));
             }
         }
         dic.OrderBy(t => t.Value);
 
-
-        for (int i = 0; i <= dic.Count; i++)
+        for (int i = 0; i < dic.Count; i++)
         {
-            if (dic.ContainsKey(i.ToString())) rankOther = i;
+            Debug.Log(PlayerPrefs.GetInt(i.ToString()));
+        }
+
+        for (int i = 0; i < dic.Count; i++)
+        {
+            if (dic.ContainsKey(inputValue[i].ToString()))
+            {
+                rankOther = i;
+            }
         }
     }
 
