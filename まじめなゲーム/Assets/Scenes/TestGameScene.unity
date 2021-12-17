@@ -1053,6 +1053,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2307414738716706215, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6180395935452053852, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1082,7 +1087,7 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpOnara
       value: 
-      objectReference: {fileID: 8300000, guid: 1678fb681221f9d4aa7375cd068d539c, type: 3}
+      objectReference: {fileID: 8300000, guid: c2ca011dc68e8534e84518657727c24f, type: 3}
     - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
         type: 3}
       propertyPath: dieOnara

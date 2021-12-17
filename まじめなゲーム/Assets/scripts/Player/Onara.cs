@@ -224,6 +224,7 @@ public class Onara : MonoBehaviour
     {
         if (value)
         {
+            audioSource.clip = jumpOnara;
             if (!flag)
             {
                 audioSource.Play();
@@ -235,5 +236,7 @@ public class Onara : MonoBehaviour
             audioSource.Stop();
             flag = false;
         }
+
+        audioSource.loop = flag;
     }
 }
