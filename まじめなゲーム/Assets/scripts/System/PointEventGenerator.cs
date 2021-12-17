@@ -8,7 +8,7 @@ public class PointEventGenerator : MonoBehaviour
 {
 
     /// <summary>生成するイベントの数(eventPointより多めに書かない事)</summary>
-    [SerializeField] int EventInstanceValue = 20;
+    [SerializeField, Tooltip("数は必ず暴漢の最高数以下にする")] int EventInstanceValue = 20;
 
     /// <summary>イベント発生オブジェクト</summary>
     private List<Transform> eventPoint = null;
@@ -17,22 +17,18 @@ public class PointEventGenerator : MonoBehaviour
 
     /// <summary>goalポイントの座標を入れる</summary>
     private List<Transform> goalPoint = null;
-    /// <summary>イベントオブジェクトを入れる箱</summary>
+    /// <summary>Goalオブジェクトを入れる箱</summary>
     [SerializeField] Transform goaltObj = null;
 
 
-    //アイテムを生成する為の物
-    [SerializeField] GameObject item = null;
     private List<Transform> itemPos = null;
     [SerializeField] Transform itemObj = null;
-    [SerializeField,Tooltip("数は必ず3つのオブジェクトの最高数以下にする")] int itemIncetanceValue = 20;
+    [SerializeField,Tooltip("数は必ずアイテムオブジェクトの最高数以下にする")] int itemIncetanceValue = 20;
     // Start is called before the first frame update
     void Start()
     {
-        /*
         GoalPointIncetance();
         EventPointIncetance();
-        */
         ItemPointIncetance();
     }
 
@@ -68,7 +64,7 @@ public class PointEventGenerator : MonoBehaviour
         if (eventPoint.Count < EventInstanceValue)
         {
             Debug.Log("数が釣り合っていないので初期値に修正");
-            EventInstanceValue = 20;
+            EventInstanceValue -= 10;
         }
 
 
