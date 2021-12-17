@@ -70,6 +70,8 @@ public class Onara : MonoBehaviour
     /// <summary>ボムが登録されているかを判定するのに使う</summary>
     [HideInInspector] public GameObject bomObj = null;
 
+    private bool flag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,7 +152,7 @@ public class Onara : MonoBehaviour
                 rd.AddForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                 OnaraParameter(onaraJetCost);
                 onaraJetSystem.Play();
-                audioSource.Play();
+                OnaraJumpSound(true);
             }
             else
             {
@@ -159,13 +161,13 @@ public class Onara : MonoBehaviour
                     rd.AddRelativeForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                     OnaraParameter(onaraJetCost);
                     onaraJetSystem.Play();
-                    audioSource.Play();
+                    OnaraJumpSound(true);
                 }
             }
         }
         else
         {
-            audioSource.Pause();
+            OnaraJumpSound(false);
             onaraJetSystem.Stop();
             if (grandKey)
             {
@@ -210,6 +212,23 @@ public class Onara : MonoBehaviour
         {
             collision.gameObject.GetComponent<ItemController>().MyDestroy();
             onaraBar.value += reCoverCost;
+        }
+    }
+
+    private void OnaraJumpSound(bool value)
+    {
+        if (value)
+        {
+            if (!flag)
+            {
+                audioSource.Play();
+                flag = true;
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+            flag = false;
         }
     }
 }
