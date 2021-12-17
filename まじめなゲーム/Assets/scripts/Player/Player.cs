@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
         {
             anime.SetInteger("moveV", 0);
             anime.SetBool("jet",onaraClass.jet);
-            Debug.Log(onaraClass.jet);
         }
 
         if (GameManager.Instance.timeLimit && oneTimeFlag)

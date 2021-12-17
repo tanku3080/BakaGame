@@ -167,6 +167,11 @@ public class Onara : MonoBehaviour
                 if (isGrand == false)
                 {
                     playercam.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = 0.5f;
+                    if (jet)
+                    {
+                        rd.mass *= 200;
+                    }
+                    else rd.mass = 200;
                 }
                 else playercam.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = 0f;
                 grandKey = false;
@@ -195,7 +200,7 @@ public class Onara : MonoBehaviour
         if (collision.gameObject.CompareTag("Grand"))
         {
             isGrand = false;
-            Debug.Log("離脱");
+            Debug.Log("イグジット" + jet);
         }
     }
 

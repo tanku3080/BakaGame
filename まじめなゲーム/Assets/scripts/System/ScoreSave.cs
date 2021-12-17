@@ -15,23 +15,31 @@ public class ScoreSave : Singleton<ScoreSave>
     /// <param name="scoreName">keyとなる文字列</param>
     public void Save(int scoreValue,string scoreName)
     {
+        Debug.Log("せーぶされた");
         if (dic.Count > 0)
         {
-            if (scoreValue > dic.Min().Value)
+            if (scoreValue > dic.Min().Value || dic.Count > 3)
             {
                 PlayerPrefs.DeleteKey(dic.Min().Key);
                 dic.Remove(dic.Min().Key);
             }
-            else rankOther = scoreValue;
         }
-        if (scoreName == dic.ContainsKey(scoreName).ToString())
+        dic.OrderBy(t => t.Value);
+        for (int i = 0; i < dic.Count; i++)
         {
-            dic.Add(scoreName + "_2", scoreValue);
+            if (dic.ContainsKey(scoreName))
+            {
+                rankOther = i;
+                break;
+            }
         }
-        else dic.OrderBy(t => t.Value);
 
         PlayerPrefs.SetInt(scoreName, scoreValue);
         PlayerPrefs.Save();
+        foreach (var item in dic)
+        {
+            Debug.Log(item.Value + item.Key);
+        }
     }
 
     /// <summary>システム文字を表示する</summary>
