@@ -11,6 +11,8 @@ public class OnaraBom : MonoBehaviour
     [SerializeField] float upwardsModifier = 0;
     Rigidbody rb;
 
+    AudioSource source = null;
+
     float time = 0;
     /// <summary>一度しか使わない判定</summary>
     private bool oneFlag = true;
@@ -19,6 +21,7 @@ public class OnaraBom : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        source = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,7 +37,8 @@ public class OnaraBom : MonoBehaviour
 
     private void Explosion()
     {
+        source.Play();
         rb.AddExplosionForce(power, new Vector3(0,1,0), radius, upwardsModifier, ForceMode.Impulse);
-        Destroy(gameObject);
+        Destroy(gameObject,1f);
     }
 }

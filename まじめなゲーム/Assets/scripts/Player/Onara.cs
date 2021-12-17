@@ -99,6 +99,8 @@ public class Onara : MonoBehaviour
             if (Input.GetMouseButtonUp(0) && onarashotKey == false)
             {
                 Debug.Log("射撃");
+
+                OnaraSound(true,ONARA_STATE.SHOT);
                 onarashotKey = true;
                 StartCoroutine(ReCastTime(onaraShotReUseTime));
             }
@@ -152,7 +154,7 @@ public class Onara : MonoBehaviour
                 rd.AddForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                 OnaraParameter(onaraJetCost);
                 onaraJetSystem.Play();
-                OnaraJumpSound(true);
+                OnaraSound(true,ONARA_STATE.JUMP);
             }
             else
             {
@@ -161,24 +163,19 @@ public class Onara : MonoBehaviour
                     rd.AddRelativeForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                     OnaraParameter(onaraJetCost);
                     onaraJetSystem.Play();
-                    OnaraJumpSound(true);
+                    OnaraSound(true, ONARA_STATE.JUMP);
                 }
             }
         }
         else
         {
-            OnaraJumpSound(false);
+            OnaraSound(false,ONARA_STATE.JUMP);
             onaraJetSystem.Stop();
             if (grandKey)
             {
                 if (isGrand == false)
                 {
                     playercam.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = 0.5f;
-                    if (jet)
-                    {
-                        rd.mass *= 200;
-                    }
-                    else rd.mass = 200;
                 }
                 else playercam.GetCinemachineComponent<CinemachineTransposer>().m_YDamping = 0f;
                 grandKey = false;
@@ -207,7 +204,6 @@ public class Onara : MonoBehaviour
         if (collision.gameObject.CompareTag("Grand"))
         {
             isGrand = false;
-            Debug.Log("イグジット" + jet);
         }
     }
 
@@ -220,23 +216,35 @@ public class Onara : MonoBehaviour
         }
     }
 
-    private void OnaraJumpSound(bool value)
+    enum ONARA_STATE
     {
-        if (value)
+        SHOT,JUMP
+    }
+    private void OnaraSound(bool value,ONARA_STATE onaraParam)
+    {
+        switch (onaraParam)
         {
-            audioSource.clip = jumpOnara;
-            if (!flag)
-            {
-                audioSource.Play();
-                flag = true;
-            }
-        }
-        else
-        {
-            audioSource.Stop();
-            flag = false;
-        }
+            case ONARA_STATE.SHOT:
+                audioSource.PlayOneShot(shotOnara);
+                break;
+            case ONARA_STATE.JUMP:
+                if (value)
+                {
+                    audioSource.clip = jumpOnara;
+                    if (!flag)
+                    {
+                        audioSource.Play();
+                        flag = true;
+                    }
+                }
+                else
+                {
+                    audioSource.Stop();
+                    flag = false;
+                }
 
-        audioSource.loop = flag;
+                audioSource.loop = flag;
+                break;
+        }
     }
 }

@@ -28,6 +28,8 @@ public class ScoreSave : Singleton<ScoreSave>
             }
             else
             {
+                Debug.Log("例外きた");
+                //keyに合致したらこの処理を行う
                 if (dic.ContainsKey(i.ToString()))
                 {
                     dic.Remove(i.ToString());
@@ -36,6 +38,7 @@ public class ScoreSave : Singleton<ScoreSave>
             }
         }
         dic.OrderBy(t => t.Value);
+
 
         for (int i = 0; i <= dic.Count; i++)
         {
