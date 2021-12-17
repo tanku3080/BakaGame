@@ -42846,6 +42846,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2307414738716706215, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6909311362401918007, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -42856,6 +42861,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: jumpOnara
+      value: 
+      objectReference: {fileID: 8300000, guid: 1678fb681221f9d4aa7375cd068d539c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166b5541d7c57bd41a990e5fcf2c9b51, type: 3}
 --- !u!114 &1513842918 stripped

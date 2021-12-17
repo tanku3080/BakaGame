@@ -46,6 +46,7 @@ public class Onara : MonoBehaviour
     /// <summary>playerカメラを格納</summary>
     [SerializeField] CinemachineVirtualCamera playercam = null;
 
+    AudioSource audioSource;
     /// <summary>飛行おなら音の格納</summary>
     [SerializeField] AudioClip jumpOnara = null;
     /// <summary>脱糞音を追加する</summary>
@@ -72,6 +73,7 @@ public class Onara : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rd = player.gameObject.GetComponent<Rigidbody>();
         onaraBar.maxValue = onaraBarMaxValue;
         onaraBar.value = onaraBarMaxValue;
@@ -148,6 +150,7 @@ public class Onara : MonoBehaviour
                 rd.AddForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                 OnaraParameter(onaraJetCost);
                 onaraJetSystem.Play();
+                audioSource.Play();
             }
             else
             {
@@ -156,11 +159,13 @@ public class Onara : MonoBehaviour
                     rd.AddRelativeForce(onaraPow * Time.deltaTime * player.up, ForceMode.Force);
                     OnaraParameter(onaraJetCost);
                     onaraJetSystem.Play();
+                    audioSource.Play();
                 }
             }
         }
         else
         {
+            audioSource.Pause();
             onaraJetSystem.Stop();
             if (grandKey)
             {
