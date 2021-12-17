@@ -46530,6 +46530,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1973256642, guid: 166b5541d7c57bd41a990e5fcf2c9b51, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.08165173
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973256642, guid: 166b5541d7c57bd41a990e5fcf2c9b51, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.971996
+      objectReference: {fileID: 0}
     - target: {fileID: 498064934236084115, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
         type: 3}
       propertyPath: m_Name
@@ -46595,6 +46603,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2307414738716706215, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6909311362401918007, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -46605,6 +46618,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: jumpOnara
+      value: 
+      objectReference: {fileID: 8300000, guid: 1678fb681221f9d4aa7375cd068d539c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166b5541d7c57bd41a990e5fcf2c9b51, type: 3}
 --- !u!114 &1513842918 stripped
@@ -46622,6 +46640,18 @@ MonoBehaviour:
 --- !u!114 &1513842919 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5033513243341432281, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+    type: 3}
+  m_PrefabInstance: {fileID: 1513842917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1513842920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5001278910761023303, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
     type: 3}
   m_PrefabInstance: {fileID: 1513842917}
   m_PrefabAsset: {fileID: 0}
@@ -56724,6 +56754,7 @@ GameObject:
   - component: {fileID: 1888391527}
   - component: {fileID: 1888391526}
   - component: {fileID: 1888391528}
+  - component: {fileID: 1888391529}
   m_Layer: 0
   m_Name: ManagerObj
   m_TagString: Untagged
@@ -56745,7 +56776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimit: 0
   timerText: {fileID: 1513842919}
-  totalTime: 30
+  totalTime: 1000
   player: {fileID: 1513842918}
   objs: []
 --- !u!4 &1888391527
@@ -56780,6 +56811,19 @@ MonoBehaviour:
   item: {fileID: 0}
   itemObj: {fileID: 1198580569}
   itemIncetanceValue: 20
+--- !u!114 &1888391529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888391525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8113ffa12fcd7f43a8b286656efa63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointUI: {fileID: 1513842920}
 --- !u!1 &1888739066 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100236, guid: c925872ce3bfa384589bf34b953d5a65,

@@ -41,7 +41,6 @@ public class GameManager : Singleton<GameManager>
         if (totalTime < 0)
         {
             timeLimit = true;
-            PointController.Instance.GameEndPointSeve();
             return;
         }
         else
@@ -59,6 +58,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameClear()
     {
+        PointController.Instance.GameEndPointSeve();
         BGMManager.Instance.BGMStop();
         FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.02f,true,"GameClear");
     }
