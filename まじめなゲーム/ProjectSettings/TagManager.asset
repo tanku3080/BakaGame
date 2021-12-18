@@ -8,6 +8,7 @@ TagManager:
   - build
   - eventEnemy
   - item
+  - Npc
   layers:
   - Default
   - TransparentFX

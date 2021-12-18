@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class NpcController : NPCManager
 {
+    /// <summary>倒す際に呼び出す</summary>
     public bool die = false;
     private BoxCollider collider = null;
     // Start is called before the first frame update

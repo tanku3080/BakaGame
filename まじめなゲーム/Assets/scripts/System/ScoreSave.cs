@@ -16,34 +16,17 @@ public class ScoreSave : Singleton<ScoreSave>
     public void Save(int scoreValue)
     {
         rankOther = 0;
+        dic.Clear();
+        SaveSet(ref scoreValue);
 
-        for (int i = 0; i < inputValue.Length; i++)
+        //保存した物をdicに入れる部分
+        for (int i = 0; i < 3; i++)
         {
-            if (!PlayerPrefs.HasKey(inputValue[i].ToString()))
-            {
-                Debug.Log("ここにはきた");
-                //存在しなかったら入れる
-                PlayerPrefs.SetInt(inputValue[i].ToString(), scoreValue);
-                dic.Add(i.ToString(), scoreValue);
-            }
-            else
-            {
-                Debug.Log("例外きた");
-                //keyに合致したらこの処理を行う
-                if (dic.ContainsKey(i.ToString()))
-                {
-                    dic.Remove(inputValue[i].ToString());
-                }
-                dic.Add(i.ToString(),PlayerPrefs.GetInt(inputValue[i].ToString()));
-            }
+            dic.Add(i.ToString(),PlayerPrefs.GetInt(i.ToString()));
         }
         dic.OrderBy(t => t.Value);
 
-        for (int i = 0; i < dic.Count; i++)
-        {
-            Debug.Log(PlayerPrefs.GetInt(i.ToString()));
-        }
-
+        //今何位なのか値を代入する箇所
         for (int i = 0; i < dic.Count; i++)
         {
             if (dic.ContainsKey(inputValue[i].ToString()))
@@ -80,6 +63,21 @@ public class ScoreSave : Singleton<ScoreSave>
             Text text = objs.transform.GetChild(number).GetComponent<Text>();
             number++;
             text.text = $"{number}位：{item.Value}";
+        }
+    }
+
+
+    /// <summary>セーブの条件を確認・・・・だよ(ノД`)・゜・。</summary>
+    private void SaveSet(ref int val)
+    {
+        for (int i = 0; i < inputValue.Length; i++)
+        {
+            if (PlayerPrefs.GetInt(inputValue[i].ToString()) < val)
+            {
+                PlayerPrefs.SetInt(inputValue[i].ToString(), val);
+            }
+
+            PlayerPrefs.Save();
         }
     }
 }
