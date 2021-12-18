@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
         {
             anime.SetInteger("moveV", 0);
             anime.SetBool("jet",onaraClass.jet);
-            Debug.Log(onaraClass.jet);
         }
 
         if (GameManager.Instance.timeLimit && oneTimeFlag)
@@ -56,6 +55,11 @@ public class Player : MonoBehaviour
         {
             Debug.Log("ポイントの処理試作");
             PointController.Instance.PointSet(3);
+        }
+        if (Input.GetKeyUp(KeyCode.B))
+        {
+            Debug.Log("特殊");
+            GameManager.Instance.GameClear();
         }
 
     }

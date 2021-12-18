@@ -24,6 +24,6 @@ public class PointController : Singleton<PointController>
     /// <summary>ゲーム終了時にポイントを保存する機能</summary>
     public void GameEndPointSeve()
     {
-        ScoreSave.Instance.Save(pointValue,DateTime.Now.ToString());
+        ScoreSave.Instance.Save(pointValue);
     }
 }

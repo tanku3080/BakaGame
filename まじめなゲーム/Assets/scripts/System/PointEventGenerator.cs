@@ -8,7 +8,7 @@ public class PointEventGenerator : MonoBehaviour
 {
 
     /// <summary>生成するイベントの数(eventPointより多めに書かない事)</summary>
-    [SerializeField] int EventInstanceValue = 20;
+    [SerializeField, Tooltip("数は必ず暴漢の最高数以下にする")] int EventInstanceValue = 20;
 
     /// <summary>イベント発生オブジェクト</summary>
     private List<Transform> eventPoint = null;
@@ -17,22 +17,18 @@ public class PointEventGenerator : MonoBehaviour
 
     /// <summary>goalポイントの座標を入れる</summary>
     private List<Transform> goalPoint = null;
-    /// <summary>イベントオブジェクトを入れる箱</summary>
+    /// <summary>Goalオブジェクトを入れる箱</summary>
     [SerializeField] Transform goaltObj = null;
 
 
-    //アイテムを生成する為の物
-    [SerializeField] GameObject item = null;
     private List<Transform> itemPos = null;
     [SerializeField] Transform itemObj = null;
-    [SerializeField,Tooltip("数は必ず3つのオブジェクトの最高数以下にする")] int itemIncetanceValue = 20;
+    [SerializeField,Tooltip("数は必ずアイテムオブジェクトの最高数以下にする")] int itemIncetanceValue = 20;
     // Start is called before the first frame update
     void Start()
     {
-        /*
         GoalPointIncetance();
         EventPointIncetance();
-        */
         ItemPointIncetance();
     }
 
@@ -51,10 +47,12 @@ public class PointEventGenerator : MonoBehaviour
     /// <summary>おならバーを回復させるアイテムを設置する</summary>
     private void ItemPointIncetance()
     {
+
         itemPos = ObjSetUp(itemObj).OrderBy(a => Guid.NewGuid()).ToList();
+
         for (int i = 0; i < itemIncetanceValue; i++)
         {
-            //暴漢が用意できないために仮のNPCを実装
+            //物が用意できないために仮のNPCを実装
             var n = Instantiate((GameObject)Resources.Load("item"), itemPos[i]);
 
         }
@@ -64,15 +62,14 @@ public class PointEventGenerator : MonoBehaviour
     /// <summary>イベント用NPCを配置する処理を作る</summary>
     private void EventPointIncetance()
     {
+        eventPoint = ObjSetUp(eventObj).OrderBy(a => Guid.NewGuid()).ToList();
         //もしも
         if (eventPoint.Count < EventInstanceValue)
         {
             Debug.Log("数が釣り合っていないので初期値に修正");
-            EventInstanceValue = 20;
+            EventInstanceValue -= 10;
         }
 
-
-        eventPoint = ObjSetUp(eventObj).OrderBy(a => Guid.NewGuid()).ToList();
         for (int i = 0; i < EventInstanceValue; i++)
         {
             //暴漢が用意できないために仮のNPCを実装

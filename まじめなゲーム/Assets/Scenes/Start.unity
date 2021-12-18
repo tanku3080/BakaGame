@@ -1048,6 +1048,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8716315671327593771, guid: a3023af6b9376294498a19d50f067306,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8716315671327593779, guid: a3023af6b9376294498a19d50f067306,
         type: 3}
       propertyPath: m_Name

@@ -827,12 +827,6 @@ GameObject:
   - component: {fileID: 1852592469}
   - component: {fileID: 1852592468}
   - component: {fileID: 1852592467}
-  - component: {fileID: 1852592466}
-  - component: {fileID: 1852592470}
-  - component: {fileID: 1852592472}
-  - component: {fileID: 1852592471}
-  - component: {fileID: 1852592473}
-  - component: {fileID: 1852592474}
   m_Layer: 9
   m_Name: Cube
   m_TagString: build
@@ -840,19 +834,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1852592466
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852592465}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1852592467
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -914,79 +895,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1852592470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852592465}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afa3460924855004da1fafdd6431ea73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EventInstanceValue: 20
-  eventObj: {fileID: 0}
-  goaltObj: {fileID: 0}
-  item: {fileID: 0}
-  itemObj: {fileID: 0}
-  itemIncetanceValue: 20
---- !u!114 &1852592471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852592465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0c5e7024fa1a4a4a9bc989cf60c91fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1852592472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852592465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733a645ded2d89140971dab08eb5eff4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 5
-  gravitySpeed: 0.05
-  box: {fileID: 0}
---- !u!114 &1852592473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852592465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 583837357c1949d4fa253f9d642b0a79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!54 &1852592474
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852592465}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2047432795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,6 +1053,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2307414738716706215, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6180395935452053852, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -1170,6 +1083,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: jumpOnara
+      value: 
+      objectReference: {fileID: 8300000, guid: c2ca011dc68e8534e84518657727c24f, type: 3}
+    - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: dieOnara
+      value: 
+      objectReference: {fileID: 8300000, guid: e80c9f630dfc8e545a30498f3fab3e32, type: 3}
+    - target: {fileID: 9004838785151458979, guid: 166b5541d7c57bd41a990e5fcf2c9b51,
+        type: 3}
+      propertyPath: shotOnara
+      value: 
+      objectReference: {fileID: 8300000, guid: fd68dd87593562b4086bf9152fef1dd6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 166b5541d7c57bd41a990e5fcf2c9b51, type: 3}
 --- !u!1001 &8716315672884041368

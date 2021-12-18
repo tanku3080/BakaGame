@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
     /// <summary>タイムリミットになったらTrueにする</summary>
-    public bool timeLimit = false;
+    [HideInInspector] public bool timeLimit = false;
     public Text timerText;
     [SerializeField] float totalTime =180;
     [SerializeField] Player player = null;
@@ -60,7 +60,7 @@ public class GameManager : Singleton<GameManager>
     {
         PointController.Instance.GameEndPointSeve();
         BGMManager.Instance.BGMStop();
-        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.02f,true,"GameClear");
+        FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_IN,0.02f,true,"Ranking");
     }
 
 

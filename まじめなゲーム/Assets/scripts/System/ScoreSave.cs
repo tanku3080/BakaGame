@@ -7,26 +7,33 @@ using System.Linq;
 public class ScoreSave : Singleton<ScoreSave>
 {
 
-    private static readonly Dictionary<string, int> dic;
-    private int rankOther = 0;
+    private readonly Dictionary<string, int> dic = new Dictionary<string, int>();
+    private int[] inputValue = new int[3];
+    private static int rankOther = 0;
 
     /// <summary>記録を保存する機能で1ゲーム終了ごとにセーブを行う</summary>
     /// <param name="scoreValue">記録の値</param>
-    /// <param name="scoreName">keyとなる文字列</param>
-    public void Save(int scoreValue,string scoreName)
+    public void Save(int scoreValue)
     {
+        rankOther = 0;
+        dic.Clear();
+        SaveSet(ref scoreValue);
 
-        if (scoreValue > dic.Min().Value || dic.Count > 0)
+        //保存した物をdicに入れる部分
+        for (int i = 0; i < 3; i++)
         {
-            PlayerPrefs.DeleteKey(dic.Min().Key);
-            dic.Remove(dic.Min().Key);
+            dic.Add(i.ToString(),PlayerPrefs.GetInt(i.ToString()));
         }
-        else rankOther = scoreValue;
-        dic.Add(scoreName, scoreValue);
         dic.OrderBy(t => t.Value);
 
-        PlayerPrefs.SetInt(scoreName, scoreValue);
-        PlayerPrefs.Save();
+        //今何位なのか値を代入する箇所
+        for (int i = 0; i < dic.Count; i++)
+        {
+            if (dic.ContainsKey(inputValue[i].ToString()))
+            {
+                rankOther = i;
+            }
+        }
     }
 
     /// <summary>システム文字を表示する</summary>
@@ -43,8 +50,6 @@ public class ScoreSave : Singleton<ScoreSave>
         {
             Debug.Log("ランキング入り");
             systemInput.text = $"現在の順位は<color=red>{rankOther}位です！</color>";
-
-            rankOther = 0;//元に戻す
         }
     }
 
@@ -56,8 +61,23 @@ public class ScoreSave : Singleton<ScoreSave>
         foreach (var item in dic)
         {
             Text text = objs.transform.GetChild(number).GetComponent<Text>();
-            text.text = item.Value + item.Key;
             number++;
+            text.text = $"{number}位：{item.Value}";
+        }
+    }
+
+
+    /// <summary>セーブの条件を確認・・・・だよ(ノД`)・゜・。</summary>
+    private void SaveSet(ref int val)
+    {
+        for (int i = 0; i < inputValue.Length; i++)
+        {
+            if (PlayerPrefs.GetInt(inputValue[i].ToString()) < val)
+            {
+                PlayerPrefs.SetInt(inputValue[i].ToString(), val);
+            }
+
+            PlayerPrefs.Save();
         }
     }
 }
