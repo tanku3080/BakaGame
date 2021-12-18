@@ -53,6 +53,7 @@ public class NpcController : NPCManager
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            PointController.Instance.PointSet(3);
             Debug.Log("接触成功");
             anime.Stop();
             collider.enabled = true;

@@ -11,6 +11,15 @@ public class ScoreSave : Singleton<ScoreSave>
     private int[] inputValue = new int[3];
     private static int rankOther = 0;
 
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+    }
+
     /// <summary>記録を保存する機能で1ゲーム終了ごとにセーブを行う</summary>
     /// <param name="scoreValue">記録の値</param>
     public void Save(int scoreValue)
@@ -49,7 +58,7 @@ public class ScoreSave : Singleton<ScoreSave>
         else
         {
             Debug.Log("ランキング入り");
-            systemInput.text = $"現在の順位は<color=red>{rankOther}位です！</color>";
+            systemInput.text = $"現在の順位は<color=red>{rankOther--}位です！</color>";
         }
     }
 

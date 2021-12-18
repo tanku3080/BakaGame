@@ -57,7 +57,6 @@ public abstract class NPCManager : MonoBehaviour
         foreach (Rigidbody rigidbody in ragdollRigidbodies)
         {
             rigidbody.isKinematic = isEnabled;
-            //animator.enabled = isEnabled;
             anime.Stop();
         }
     }
