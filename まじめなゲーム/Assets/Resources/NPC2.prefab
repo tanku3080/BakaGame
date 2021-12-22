@@ -2111,6 +2111,8 @@ GameObject:
   - component: {fileID: 400078}
   - component: {fileID: 11100000}
   - component: {fileID: -5096714732720771990}
+  - component: {fileID: 2120683453374500928}
+  - component: {fileID: 1942985665186514505}
   m_Layer: 0
   m_Name: NPC2
   m_TagString: Npc
@@ -2168,3 +2170,43 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &2120683453374500928
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100078}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1942985665186514505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e752a2a7950489044bf3a4c263ebe64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anime: {fileID: 0}
+  animator: {fileID: 0}
+  ragdollRigidbodies:
+  - {fileID: 6003158073190519234}
+  - {fileID: 259876070147755140}
+  - {fileID: 7750711259597488043}
+  - {fileID: 4668642234960545647}
+  - {fileID: 4771186063134103412}
+  die: 0
