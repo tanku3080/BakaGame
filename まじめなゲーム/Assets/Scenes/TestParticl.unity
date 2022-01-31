@@ -378,6 +378,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Onara_Shooting
       objectReference: {fileID: 0}
+    - target: {fileID: 658173010314546561, guid: 89cb0e3b23337a147a6fb8be37cebcae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89cb0e3b23337a147a6fb8be37cebcae, type: 3}
 --- !u!1001 &698091469830436844
@@ -392,6 +397,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cloud_of_Dust
       objectReference: {fileID: 0}
+    - target: {fileID: 698091468789920760, guid: f787c5abb2717b442ae2c73aff94be6c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 698091468789920762, guid: f787c5abb2717b442ae2c73aff94be6c,
         type: 3}
       propertyPath: ShapeModule.type
@@ -401,6 +411,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 698091468789920762, guid: f787c5abb2717b442ae2c73aff94be6c,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 698091468789920763, guid: f787c5abb2717b442ae2c73aff94be6c,
         type: 3}

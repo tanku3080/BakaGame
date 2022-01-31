@@ -7,7 +7,6 @@ public class ObjController : MonoBehaviour
     [SerializeField] BoxCollider box = null;
     private Rigidbody rd = null;
 
-
     /// <summary>オブジェクトがDestoyされるまでの時間</summary>
     [SerializeField] readonly float objdestroyTime = 10f;
 
