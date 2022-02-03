@@ -16,6 +16,7 @@ public class ObjectsAddComponent : MonoBehaviour
             }
         }
     }
+
     private static GameObject[] SearchObj()
     {
         return GameObject.FindGameObjectsWithTag("build");
@@ -44,6 +45,21 @@ public class ObjectsAddComponent : MonoBehaviour
             }
         }
     }
+
+    [MenuItem("Editor/Test")]
+
+    private static void Test()
+    {
+        foreach (var item in SearchObj())
+        {
+            if (!item.GetComponent<Particle>())
+            {
+                item.AddComponent<Particle>();
+                item.AddComponent<ParticleStart>();
+            }
+        }
+    }
+
     [MenuItem("Editor/RigitBody/Add")]
     private static void AddRd()
     {
