@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 /// <summary>スコアを保存したり呼び出したりするクラス</summary>
 public class ScoreSave : Singleton<ScoreSave>
@@ -21,34 +19,49 @@ public class ScoreSave : Singleton<ScoreSave>
     public void Save(int scoreVal)
     {
         GetPoint();
+        int[] keep = new int[3];
+        point.CopyTo(keep, 0);
+        foreach (var item in keep)
+        {
+            Debug.Log("値は" + item);
+        }
+
+        bool oneTimePas = true;
         for (int i = 0; i < point.Length; i++)
         {
-            //0又はそれ以上なら入れる。
-            if (point[i] == 0)
+            if (oneTimePas)
             {
-                point[i] = scoreVal;
-                PrefsSet(i.ToString(),scoreVal);
-                rankingVal += i++;
-                break;
-            }
-            else if (point[i] > scoreVal)
-            {
-                if (i == 2)
+                //0又はそれ以上なら入れる。
+                if (point[i] == 0)
                 {
-                    PrefsSet(i.ToString(),scoreVal);
                     point[i] = scoreVal;
-                    rankingVal += i++;
+                    PrefsSet(i.ToString(), scoreVal);
+                    rankingVal += 1;
+                    Debug.Log($"{i}のtrue");
                 }
-                else
+                else if (point[i] > scoreVal)
                 {
-                    PrefsSet(i++.ToString(),scoreVal);
-                    point[i++] = scoreVal;
-                    rankingVal += i + 2;
+                    if (i == 2)
+                    {
+                        PrefsSet(i.ToString(), scoreVal);
+                        point[i] = scoreVal;
+                        rankingVal += 2;
+                        Debug.Log($"{i}のa");
+                    }
+                    else
+                    {
+                        PrefsSet(i++.ToString(), scoreVal);
+                        point[i++] = scoreVal;
+                        rankingVal += i;
+                        Debug.Log($"{i}のb");
+                    }
                 }
-                break;
+                oneTimePas = false;
             }
+            else break;
         }
     }
+    public void SaveDel() => PlayerPrefs.DeleteAll();
 
     //Saveする為にする事。
     private void PrefsSet(string delKey,int inputVal)
@@ -62,7 +75,7 @@ public class ScoreSave : Singleton<ScoreSave>
     /// <param name="systemInput">もし、rankOtherが0ならランキング外の文字列,違うなら何位なのかの表示</param>
     public void SystemShow(Text systemInput)
     {
-        if (rankingVal == 0)
+        if (rankingVal > 3)
         {
             Debug.Log("ランキング外");
             systemInput.text = "ランキング外です";
@@ -87,36 +100,4 @@ public class ScoreSave : Singleton<ScoreSave>
             text.text = $"{number}位：{item}";
         }
     }
-
-    /*
-
-    private readonly Dictionary<string, int> dic = new Dictionary<string, int>();
-    private int[] inputValue = new int[3];
-    private static int rankOther = 0;
-
-    /// <summary>記録を保存する機能で1ゲーム終了ごとにセーブを行う</summary>
-    /// <param name="scoreValue">記録の値</param>
-    public void Save(int scoreValue)
-    {
-        rankOther = 0;
-        dic.Clear();
-        SaveSet(ref scoreValue);
-
-        //保存した物をdicに入れる部分
-        for (int i = 0; i < 3; i++)
-        {
-            dic.Add(i.ToString(),PlayerPrefs.GetInt(i.ToString()));
-        }
-        dic.OrderBy(t => t.Value);
-
-        //今何位なのか値を代入する箇所
-        for (int i = 0; i < dic.Count; i++)
-        {
-            if (dic.ContainsKey(inputValue[i].ToString()))
-            {
-                rankOther = i;
-            }
-        }
-    }
-    */
 }

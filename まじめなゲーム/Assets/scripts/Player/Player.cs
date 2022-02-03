@@ -61,6 +61,11 @@ public class Player : MonoBehaviour
             Debug.Log("特殊");
             GameManager.Instance.GameClear();
         }
+        if (Input.GetKeyUp(KeyCode.H))
+        {
+            Debug.Log("セーブ全削除");
+            ScoreSave.Instance.SaveDel();
+        }
 
     }
 
