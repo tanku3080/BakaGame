@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public bool timeLimit = false;
     public Text timerText;
     [SerializeField] float totalTime =180;
-    [SerializeField] Player player = null;
+    [SerializeField]public Player player = null;
 
     /// <summary>倒壊する建物を入れる</summary>
     [HideInInspector] public List<ObjController> objs = new List<ObjController>();

@@ -52,11 +52,7 @@ public class ObjectsAddComponent : MonoBehaviour
     {
         foreach (var item in SearchObj())
         {
-            if (!item.GetComponent<Particle>())
-            {
-                item.AddComponent<Particle>();
-                item.AddComponent<ParticleStart>();
-            }
+            DestroyImmediate(item.GetComponent<Particle>());
         }
     }
 

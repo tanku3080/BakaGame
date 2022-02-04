@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 658173010314546558}
   - component: {fileID: 658173010314546559}
   - component: {fileID: 658173010314546560}
+  - component: {fileID: 5392849133246569219}
   m_Layer: 0
   m_Name: Onara_Shooting
   m_TagString: Untagged
@@ -4754,3 +4755,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &5392849133246569219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658173010314546561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48dceed9d1a908341aad9c60fca36c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
