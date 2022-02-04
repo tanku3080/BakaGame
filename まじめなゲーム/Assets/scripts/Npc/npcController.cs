@@ -6,13 +6,15 @@ public class NpcController : NPCManager
 {
     /// <summary>倒す際に呼び出す</summary>
     public bool die = false;
-    private BoxCollider collider = null;
+    private new BoxCollider collider = null;
+    AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
         collider = gameObject.GetComponent<BoxCollider>();
         SetRagdoll(false);
         MoveSet(Random.Range(1, 5));
+        source = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,6 +59,7 @@ public class NpcController : NPCManager
             PointController.Instance.PointSet(3);
             anime.Stop();
             collider.enabled = true;
+            source.Play();
             die = true;
         }
     }

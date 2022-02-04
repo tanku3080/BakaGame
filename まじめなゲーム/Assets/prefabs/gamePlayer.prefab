@@ -133,8 +133,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973256641}
-  m_LocalRotation: {x: 0.08165173, y: -0, z: -0, w: 0.99666095}
-  m_LocalPosition: {x: 0, y: 1.48, z: -8.971996}
+  m_LocalRotation: {x: 0.08165164, y: -0, z: -0, w: 0.99666095}
+  m_LocalPosition: {x: 0, y: 1.48, z: -8.972006}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children:
   - {fileID: 587763120}
@@ -438,8 +438,8 @@ MonoBehaviour:
   bom: {fileID: 2917599134704187391, guid: 8d15b074a17c0f44c8df5467f34f083b, type: 3}
   playercam: {fileID: 1973256643}
   jumpOnara: {fileID: 8300000, guid: c2ca011dc68e8534e84518657727c24f, type: 3}
-  dieOnara: {fileID: 0}
-  shotOnara: {fileID: 0}
+  dieOnara: {fileID: 8300000, guid: e80c9f630dfc8e545a30498f3fab3e32, type: 3}
+  shotOnara: {fileID: 8300000, guid: fd68dd87593562b4086bf9152fef1dd6, type: 3}
   onaraShotReUseTime: 1.5
   jet: 0
   bomObj: {fileID: 0}
@@ -2822,17 +2822,17 @@ PrefabInstance:
     - target: {fileID: 5311664233304271883, guid: 92d482d28632dd34ea1bac8c079a3e93,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 5311664233304271883, guid: 92d482d28632dd34ea1bac8c079a3e93,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -28.6
+      value: -19.3
       objectReference: {fileID: 0}
     - target: {fileID: 5311664233304271883, guid: 92d482d28632dd34ea1bac8c079a3e93,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.7
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5311664233304271883, guid: 92d482d28632dd34ea1bac8c079a3e93,
         type: 3}

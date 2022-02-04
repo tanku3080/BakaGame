@@ -51,8 +51,6 @@ public class Onara : MonoBehaviour
     [SerializeField] AudioClip jumpOnara = null;
     /// <summary>脱糞音を追加する</summary>
     [SerializeField] AudioClip dieOnara = null;
-    /// <summary>射撃を行うためのおなら</summary>
-    [SerializeField] AudioClip shotOnara = null;
 
     Rigidbody rd = null;
 
@@ -61,8 +59,6 @@ public class Onara : MonoBehaviour
     /// <summary>対空中か？</summary>
     private bool grandKey = true;
 
-    /// <summary>おなら射撃が行えるかどうかのキー</summary>
-    private bool onarashotKey = false;
     /// <summary>おなら射撃の再使用時間</summary>
     [SerializeField] float onaraShotReUseTime = 1.5f;
 
@@ -95,48 +91,9 @@ public class Onara : MonoBehaviour
                 bomObj = Instantiate(bom, playerPos - new Vector3(
                     0, -0.1f,0.1f), Quaternion.identity);
             }
-
-            if (Input.GetMouseButtonUp(0) && onarashotKey == false)
-            {
-                Debug.Log("射撃");
-
-                OnaraSound(true,ONARA_STATE.SHOT);
-                onarashotKey = true;
-                StartCoroutine(ReCastTime(onaraShotReUseTime));
-            }
         }
     }
 
-    /// <summary>もう一度使えるまでの時間</summary>
-    /// <param name="time">待機時間</param>
-    /// <returns></returns>
-    IEnumerator ReCastTime(float time)
-    {
-        float timeDalta = 0f;
-        RaycastHit hit;
-        Debug.DrawRay(transform.position,transform.forward,Color.red,onaraRange);
-        //射撃を行うコードをここに書く
-        if (Physics.Raycast(transform.position,transform.forward,out hit,onaraRange))
-        {
-            if (hit.collider.CompareTag("build"))
-            {
-                //建物に当たったらDestroyを使う。
-                hit.collider.gameObject.GetComponent<ObjController>().ObjDestroy();
-            }
-            else if (hit.collider.CompareTag("eventEnemy"))
-            {
-                hit.collider.gameObject.GetComponent<EventNPCController>().NPCDie();
-            }
-        }
-
-        while (true)
-        {
-            yield return null;
-            if (time <= timeDalta) break;
-            else timeDalta += Time.deltaTime;
-        }
-        yield return onarashotKey = false;
-    }
 
     /// <summary>おならの値を消費するための処理</summary>
     /// <param name="input">消費する値</param>
@@ -218,15 +175,12 @@ public class Onara : MonoBehaviour
 
     enum ONARA_STATE
     {
-        SHOT,JUMP
+        JUMP
     }
     private void OnaraSound(bool value,ONARA_STATE onaraParam)
     {
         switch (onaraParam)
         {
-            case ONARA_STATE.SHOT:
-                audioSource.PlayOneShot(shotOnara);
-                break;
             case ONARA_STATE.JUMP:
                 if (value)
                 {

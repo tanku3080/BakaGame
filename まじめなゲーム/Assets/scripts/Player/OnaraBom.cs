@@ -43,7 +43,7 @@ public class OnaraBom : MonoBehaviour
         source.Play();
         exp.enabled = true;
         rb.AddExplosionForce(power, new Vector3(0,1,0), radius, upwardsModifier, ForceMode.Impulse);
-        Destroy(gameObject,1f);
+        Destroy(gameObject,1.5f);
     }
 
     void OnTriggerEnter(Collider other)

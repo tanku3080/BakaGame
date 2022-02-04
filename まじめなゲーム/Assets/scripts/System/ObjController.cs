@@ -24,8 +24,8 @@ public class ObjController : MonoBehaviour
         box.enabled = false;
         rd.useGravity = true;
         rd.constraints = RigidbodyConstraints.None;
-
-        Destroy(gameObject,objdestroyTime);
+        ParticleStart.Instance.StartParticle(gameObject.transform,ParticleStart.ParticleStatus.TOUKAI);
+        Destroy(gameObject, objdestroyTime);
     }
 
 

@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
+/// <summary>NPCアイコンに追加するスクリプト</summary>
 public class IconController : MonoBehaviour
 {
     [SerializeField] NpcController npcs = null;
+    private Vector3 objPosition;
     private void Start()
     {
-        //iconは親オブジェクトであるNPCやオブジェクトの直下に置く
-        npcs = transform.parent.GetComponent<NpcController>();
+        objPosition = gameObject.transform.position;
     }
-    void LateUpdate()
+
+    private void Update()
     {
         if (npcs.die) Destroy(gameObject);
         else gameObject.transform.LookAt(GameManager.Instance.player.transform);
+        transform.position = new Vector3(objPosition.x, Mathf.Sin(Time.time) * 0.04f + objPosition.y, objPosition.z);
     }
 }
