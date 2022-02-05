@@ -15,6 +15,7 @@ public class FadeManager:Singleton<FadeManager>
     }
     /// <summary>フェード処理が終わったかどうかを返す</summary>
     [HideInInspector] public bool fadeStopFlag;
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
