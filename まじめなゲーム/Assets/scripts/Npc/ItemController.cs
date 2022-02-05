@@ -12,12 +12,13 @@ public class ItemController : MonoBehaviour
     [SerializeField,Tooltip("アイテムのポイント")] int itemPointValue = 5;
 
     AudioSource source;
-
+    SphereCollider sphere = null;
     // Start is called before the first frame update
     void Start()
     {
         firstPos = transform.position.y;
         source = gameObject.GetComponent<AudioSource>();
+        sphere = gameObject.GetComponent<SphereCollider>();
     }
 
     // Update is called once per frame
@@ -30,6 +31,7 @@ public class ItemController : MonoBehaviour
     public void MyDestroy()
     {
         PointController.Instance.PointSet(itemPointValue);
+        sphere.enabled = false;
         source.Play();
         Destroy(gameObject,delayTime);
     }
