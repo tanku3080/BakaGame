@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class RankingSection : MonoBehaviour
 {
-    [SerializeField] Text systemText = null;
     [SerializeField] GameObject rankingTexts = null;
     private bool actionFalg = true;
 
@@ -16,7 +15,6 @@ public class RankingSection : MonoBehaviour
         FadeManager.Instance.FadeBlack();
         FadeManager.Instance.FadeSystem(FadeManager.FADE_STATUS.FADE_OUT);
 
-        ScoreSave.Instance.SystemShow(systemText);
         ScoreSave.Instance.ShowRank(rankingTexts);
     }
 

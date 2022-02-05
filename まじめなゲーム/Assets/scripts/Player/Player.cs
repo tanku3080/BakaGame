@@ -49,22 +49,10 @@ public class Player : MonoBehaviour
             oneTimeFlag = false;
             Dappun();
         }
-
-        
-        if (Input.GetKeyUp(KeyCode.P))
-        {
-            Debug.Log("ポイントの処理試作");
-            PointController.Instance.PointSet(3);
-        }
         if (Input.GetKeyUp(KeyCode.B))
         {
             Debug.Log("特殊");
             GameManager.Instance.GameClear();
-        }
-        if (Input.GetKeyUp(KeyCode.H))
-        {
-            Debug.Log("セーブ全削除");
-            ScoreSave.Instance.SaveDel();
         }
 
     }
