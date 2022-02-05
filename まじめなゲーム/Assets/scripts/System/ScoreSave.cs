@@ -1,62 +1,65 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>スコアを保存したり呼び出したりするクラス</summary>
 public class ScoreSave : Singleton<ScoreSave>
 {
-    public int[] point = new int[3];
+    public List<int> points = new List<int>();
     private int rankingVal = 0;
 
     /// <summary>ポイントの取得</summary>
     private void GetPoint()
     {
-        for (int i = 0; i < point.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
-            point[i] = PlayerPrefs.GetInt(i.ToString());
+            points.Add(PlayerPrefs.GetInt(i.ToString()));
         }
     }
 
     public void Save(int scoreVal)
     {
         GetPoint();
-        int[] keep = new int[3];
-        point.CopyTo(keep, 0);
-        foreach (var item in keep)
-        {
-            Debug.Log("値は" + item);
-        }
 
         bool oneTimePas = true;
-        for (int i = 0; i < point.Length; i++)
+
+        for (int i = 0; i < points.Count; i++)
         {
+            Debug.Log($"{i}の値before");
             if (oneTimePas)
             {
-                //0又はそれ以上なら入れる。
-                if (point[i] == 0)
+                if (scoreVal != 0)
                 {
-                    point[i] = scoreVal;
-                    PrefsSet(i.ToString(), scoreVal);
-                    rankingVal += 1;
-                    Debug.Log($"{i}のtrue");
-                }
-                else if (point[i] > scoreVal)
-                {
-                    if (i == 2)
+                    Debug.Log($"{i}の値インプット");
+                    //0又はそれ以上なら入れる。
+                    if (points[i] == 0)
                     {
+                        points[i] = scoreVal;
                         PrefsSet(i.ToString(), scoreVal);
-                        point[i] = scoreVal;
-                        rankingVal += 2;
-                        Debug.Log($"{i}のa");
+                        rankingVal += 1;
+                        Debug.Log($"{i}のtrue");
                     }
-                    else
+                    else if (points[i] > scoreVal)
                     {
-                        PrefsSet(i++.ToString(), scoreVal);
-                        point[i++] = scoreVal;
-                        rankingVal += i;
-                        Debug.Log($"{i}のb");
+
+                        if (i == 2)
+                        {
+                            PrefsSet(i.ToString(), scoreVal);
+                            points[i++] = scoreVal;
+                            rankingVal += 2;
+                            Debug.Log($"{i}のa");
+                        }
+                        else//何故か3位でもここに行く
+                        {
+                            PrefsSet(i++.ToString(), scoreVal);
+                            points[i++] = scoreVal;
+                            rankingVal += i;
+                            Debug.Log($"{i}のb");
+                        }
                     }
+                    oneTimePas = false;
                 }
-                oneTimePas = false;
             }
             else break;
         }
@@ -93,7 +96,7 @@ public class ScoreSave : Singleton<ScoreSave>
     public void ShowRank(GameObject objs)
     {
         int number = 0;
-        foreach (var item in point)
+        foreach (var item in points)
         {
             Text text = objs.transform.GetChild(number).GetComponent<Text>();
             number++;
