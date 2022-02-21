@@ -3,9 +3,9 @@
 public class ItemController : MonoBehaviour
 {
     /// <summary>ゆらゆら動く時間</summary>
-    [SerializeField] float poinTime = 0.01f;
+    static float poinTime = 0.9f;
     /// <summary>上下運動を遅らす処理</summary>
-    [SerializeField] float delayTime = 0.5f;
+    private float delayTime = 0.5f;
     private float firstPos = 0;
 
     /// <summary>アイテム取得時のポイント/// </summary>
