@@ -21,6 +21,7 @@ public class ObjController : MonoBehaviour
 
     public void ObjDestroy()
     {
+        PointController.Instance.PointSet(2);
         box.enabled = false;
         rd.useGravity = true;
         rd.constraints = RigidbodyConstraints.None;
