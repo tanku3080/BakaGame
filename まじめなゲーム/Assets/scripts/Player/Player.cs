@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject player = null;
     [SerializeField] private Onara onaraClass = null;
-    [SerializeField] private float playerSpeed = 20f;
+    [SerializeField] private float playerSpeed = 50f;
 
     /// <summary>脱糞処理が終わった</summary>
     [HideInInspector] public bool endOfDappun = false;
